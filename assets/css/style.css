@@ -1,1 +1,140 @@
+/* assets/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@1,500&display=swap');
 
+:root {
+    --deep-sea: #001220;
+    --ocean: #004e92;
+    --moon-glow: #00d2ff;
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: radial-gradient(circle at top right, #001f3f, var(--deep-sea));
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Hintergrund-Effekt (Bubbles) */
+.bg-bubbles {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background-image: 
+        radial-gradient(var(--glass-border) 1px, transparent 1px),
+        radial-gradient(var(--glass-border) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    opacity: 0.1;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--moon-glow); text-shadow: 0 0 15px var(--moon-glow); }
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 600;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--moon-glow); }
+
+/* Hero Section */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 4rem;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to right, #fff, var(--moon-glow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+/* Glass Cards */
+.container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+}
+
+/* Button Styling */
+.btn-glow {
+    background: transparent;
+    border: 2px solid var(--moon-glow);
+    color: var(--moon-glow);
+    padding: 12px 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.4s;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-glow:hover {
+    background: var(--moon-glow);
+    color: var(--deep-sea);
+    box-shadow: 0 0 20px var(--moon-glow);
+}
+
+/* Download List Styling */
+.version-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.badge {
+    background: var(--moon-glow);
+    color: var(--deep-sea);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Animation Classes */
+.hidden { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+.show { opacity: 1; transform: translateY(0); }
