@@ -1,66 +1,75 @@
-/* assets/css/style.css */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@1,500&display=swap');
+/* =========================================
+   MAKO MERMAIDS MOD - OFFICIAL STYLE
+   Theme: Deep Sea & Moon Pool (Glassmorphism)
+   ========================================= */
+
+/* 1. FONTS & VARIABLES */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap');
 
 :root {
-    --deep-sea: #001220;
-    --ocean: #004e92;
-    --moon-glow: #00d2ff;
+    --deep-sea: #001220;       /* Fast Schwarz-Blau */
+    --ocean: #004e92;          /* Mittelblau */
+    --moon-glow: #00d2ff;      /* Helles Cyan (Mondpool) */
     --glass: rgba(255, 255, 255, 0.08);
     --glass-border: rgba(255, 255, 255, 0.2);
     --text: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+/* 2. BODY & BACKGROUND */
 body {
     background: radial-gradient(circle at top right, #001f3f, var(--deep-sea));
     color: var(--text);
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Verhindert seitliches Scrollen */
     min-height: 100vh;
+    line-height: 1.6;
 }
 
-/* Hintergrund-Effekt (Bubbles) */
-.bg-bubbles {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    background-image: 
-        radial-gradient(var(--glass-border) 1px, transparent 1px),
-        radial-gradient(var(--glass-border) 1px, transparent 1px);
-    background-size: 50px 50px;
-    background-position: 0 0, 25px 25px;
-    opacity: 0.1;
-}
-
-/* Navigation */
+/* 3. NAVIGATION */
 nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px 50px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* Milchglas-Effekt */
+    background: rgba(0, 18, 32, 0.7);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
 }
 
-.logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--moon-glow); text-shadow: 0 0 15px var(--moon-glow); }
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--moon-glow);
+    text-shadow: 0 0 15px var(--moon-glow);
+    font-weight: bold;
+}
 
 .nav-links a {
     color: white;
     text-decoration: none;
     margin-left: 30px;
     font-weight: 600;
-    position: relative;
     transition: 0.3s;
+    font-size: 1.1rem;
 }
 
-.nav-links a:hover { color: var(--moon-glow); }
+.nav-links a:hover {
+    color: var(--moon-glow);
+    text-shadow: 0 0 10px var(--moon-glow);
+}
 
-/* Hero Section */
+/* 4. HERO SECTION (Startbildschirm) */
 .hero {
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,20 +81,26 @@ nav {
 h1 {
     font-size: 4rem;
     font-family: 'Playfair Display', serif;
+    /* Text-Verlauf von Weiß zu Cyan */
     background: linear-gradient(to right, #fff, var(--moon-glow));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
+    line-height: 1.1;
 }
 
-/* Glass Cards */
-.container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
+/* 5. CARDS & CONTAINER */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
 
 .card {
     background: var(--glass);
     backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    padding: 30px;
+    padding: 40px;
     border-radius: 20px;
     margin-bottom: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -93,53 +108,46 @@ h1 {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.1);
+    border-color: rgba(0, 210, 255, 0.3);
 }
 
-/* Button Styling */
+h2 {
+    color: var(--moon-glow);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+h3 { margin-bottom: 10px; color: #fff; }
+
+/* 6. BUTTONS (Glow Effect) */
 .btn-glow {
     background: transparent;
     border: 2px solid var(--moon-glow);
     color: var(--moon-glow);
-    padding: 12px 30px;
-    font-size: 1rem;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
     cursor: pointer;
     border-radius: 50px;
     text-decoration: none;
     transition: 0.4s;
     display: inline-block;
-    margin-top: 20px;
+    margin: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn-glow:hover {
     background: var(--moon-glow);
     color: var(--deep-sea);
-    box-shadow: 0 0 20px var(--moon-glow);
+    box-shadow: 0 0 25px var(--moon-glow);
+    transform: scale(1.05);
 }
 
-/* Download List Styling */
-.version-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.badge {
-    background: var(--moon-glow);
-    color: var(--deep-sea);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-/* Animation Classes */
-.hidden { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
-.show { opacity: 1; transform: translateY(0); }
-
-/* Update für Tabellen und Listen */
+/* 7. WIKI TABLES (Für Abilities) */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -148,41 +156,133 @@ table {
     border-radius: 10px;
     overflow: hidden;
 }
+
 th, td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid var(--glass-border);
 }
+
 th {
     background: rgba(0, 210, 255, 0.1);
     color: var(--moon-glow);
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
+
 tr:hover { background: rgba(255,255,255,0.05); }
 
-/* Grid für Items */
+/* 8. ITEM GRID (Für Items & Biome) */
 .item-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+    margin-top: 20px;
 }
+
 .item-card {
     background: rgba(255,255,255,0.05);
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
     border-left: 3px solid var(--moon-glow);
+    transition: 0.2s;
 }
-.warning-box {
-    background: rgba(255, 0, 0, 0.1);
-    border: 1px solid red;
-    padding: 15px;
-    border-radius: 10px;
-    color: #ffcccc;
-    margin: 20px 0;
+
+.item-card:hover {
+    background: rgba(255,255,255,0.1);
 }
+
+.item-card h3, .item-card h4 {
+    margin-top: 0;
+    color: var(--moon-glow);
+}
+
 code {
     background: rgba(0,0,0,0.5);
     padding: 2px 6px;
     border-radius: 4px;
     font-family: monospace;
-    color: var(--moon-glow);
+    color: #ffd700; /* Gold/Gelb für Commands */
+}
+
+/* 9. GALERIE GRID */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Schneidet Bilder sauber zu */
+    border-radius: 10px;
+    border: 2px solid var(--glass-border);
+    transition: 0.3s;
+}
+
+.gallery-img:hover {
+    transform: scale(1.03);
+    border-color: var(--moon-glow);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+    z-index: 10;
+}
+
+/* 10. FOOTER & SOCIAL MEDIA */
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 80px;
+    background: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid var(--glass-border);
+}
+
+.social-links { margin-bottom: 30px; }
+
+.social-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 8px;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+/* Social Colors */
+.tt { background: #000000; border: 1px solid #333; } /* TikTok */
+.dc { background: #5865F2; } /* Discord */
+.md { background: #1bd96a; color: #000; } /* Modrinth */
+.cf { background: #F16436; } /* CurseForge */
+.mc { background: #1C262F; border: 1px solid #555; } /* MCreator */
+.yt { background: #FF0000; } /* YouTube */
+
+/* 11. ANIMATIONEN (Fade In) */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease; /* Weiches Einblenden */
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 12. MOBILE OPTIMIERUNG (Handy) */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    nav { flex-direction: column; padding: 15px; }
+    .nav-links { margin-top: 15px; }
+    .nav-links a { margin: 0 10px; font-size: 0.9rem; }
+    .gallery-grid { grid-template-columns: 1fr; } /* Bilder untereinander auf Handy */
 }
