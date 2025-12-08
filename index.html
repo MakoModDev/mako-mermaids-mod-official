@@ -3,294 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mako Mermaids Mod | Official Wiki</title>
-    <style>
-        :root {
-            --bg-color: #001f3f;
-            --text-color: #ecf0f1;
-            --accent-color: #7FDBFF; /* Mondpool Cyan */
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --header-gradient: linear-gradient(180deg, #0074D9 0%, #001f3f 100%);
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(0, 0, 0, 0.8);
-            position: sticky;
-            top: 0;
-            padding: 15px;
-            text-align: center;
-            z-index: 1000;
-            border-bottom: 2px solid var(--accent-color);
-        }
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: 0.3s;
-        }
-        nav a:hover { color: var(--accent-color); text-shadow: 0 0 10px var(--accent-color); }
-
-        /* Header */
-        header {
-            background: var(--header-gradient);
-            text-align: center;
-            padding: 80px 20px;
-        }
-        h1 { font-size: 3.5em; margin: 0; text-shadow: 0 0 20px var(--accent-color); }
-        .subtitle { font-size: 1.2em; opacity: 0.9; margin-bottom: 20px; display: block;}
-        
-        /* Buttons */
-        .btn {
-            background-color: var(--accent-color);
-            color: #001f3f;
-            padding: 12px 25px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 25px;
-            display: inline-block;
-            margin: 10px;
-            transition: 0.3s;
-        }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--accent-color); }
-
-        /* Content Sections */
-        .section {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-        h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; margin-top: 50px; color: var(--accent-color); }
-        
-        /* Grids for Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(127, 219, 255, 0.2);
-        }
-        .card h3 { margin-top: 0; color: #fff; }
-
-        /* Tables for Abilities */
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: var(--card-bg); }
-        th, td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left; }
-        th { background: rgba(0, 116, 217, 0.3); color: var(--accent-color); }
-
-        /* Changelog Style */
-        .update-box {
-            border-left: 4px solid var(--accent-color);
-            background: rgba(0,0,0,0.2);
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        .version-tag {
-            background: var(--accent-color);
-            color: #000;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9em;
-        }
-        .date { font-size: 0.85em; opacity: 0.6; margin-left: 10px; }
-
-        code { background: rgba(0,0,0,0.5); padding: 2px 5px; border-radius: 4px; font-family: monospace; color: #ffeb3b; }
-
-        footer { text-align: center; padding: 40px; font-size: 0.8em; opacity: 0.6; margin-top: 50px; border-top: 1px solid #333; }
-    </style>
+    <title>Mako Mermaids | Minecraft Mod</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <div class="bg-bubbles"></div>
 
     <nav>
-        <a href="#about">Home</a>
-        <a href="#characters">Characters</a>
-        <a href="#abilities">Abilities</a>
-        <a href="#items">Items</a>
-        <a href="#downloads">Downloads & Updates</a>
+        <div class="logo">Mako Mod</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="characters.html">Wiki</a>
+            <a href="downloads.html">Downloads</a>
+        </div>
     </nav>
 
-    <header>
-        <h1>Mako Mermaids Mod</h1>
-        <span class="subtitle">Unofficial Minecraft Mod based on H2O & Mako Mermaids</span>
-        
-        <a href="https://youtu.be/CBbTB6Kdxq4?si=TtKh-MFCiTDvmnrL" target="_blank" class="btn">▶ Watch Showcase</a>
-        <a href="https://modrinth.com/mod/mako-mermaids-mod" target="_blank" class="btn">⬇ Download on Modrinth</a>
-        <a href="https://discord.gg/DEIN_DISCORD_LINK_HIER" target="_blank" class="btn" style="background:#5865F2; color:white;">Join Discord</a>
+    <header class="hero hidden">
+        <h1>Entdecke den Ozean neu.</h1>
+        <p style="font-size: 1.2rem; opacity: 0.8; max-width: 600px;">
+            Verwandle dich, nutze die Macht des Mondpools und erkunde neue Biome in Minecraft.
+        </p>
+        <a href="downloads.html" class="btn-glow">Mod Herunterladen</a>
     </header>
 
-    <div class="section" id="about">
-        <h2>🧜‍♀️ About the Mod</h2>
-        <p>Welcome to the official wiki for the Mako Mermaids Minecraft Mod! Transform into a mermaid, explore new biomes like the Baltic Sea, and wield elemental powers. 
-        <br><br>
-        <strong>Disclaimer:</strong> This is an unofficial fan-made project. I am not affiliated with Jonathan M. Shiff Productions. Created by MakoModDev using MCreator.</p>
-        
-        <div class="grid">
-            <div class="card">
-                <h3>🌊 Transformation</h3>
-                <p>Touch water or rain to transform! Includes tail animations. Use <code>/change_character</code> to switch.</p>
-            </div>
-            <div class="card">
-                <h3>🌍 New Biomes</h3>
-                <p>Explore the <strong>Baltic Sea</strong> (seagrass) and the <strong>Beaufort Sea</strong> (Ice Desert).</p>
-            </div>
-            <div class="card">
-                <h3>⚔️ Bosses</h3>
-                <p>Beware the <strong>Water Dragon</strong>! One hit removes your mermaid form. Use "Turn the Tide" to survive.</p>
-            </div>
+    <div class="container">
+        <div class="card hidden">
+            <h2>🌊 Das Abenteuer beginnt</h2>
+            <p>Basierend auf H2O und Mako Mermaids. Diese Mod fügt ein komplettes Verwandlungssystem, elementare Kräfte und gefährliche Bosse wie den Wasserdrachen hinzu.</p>
+        </div>
+
+        <div class="card hidden" style="text-align: center;">
+            <h2>Showcase</h2>
+            <br>
+            <iframe width="100%" height="400" src="https://www.youtube.com/embed/CBbTB6Kdxq4" frameborder="0" allowfullscreen style="border-radius: 10px; border: 1px solid var(--moon-glow);"></iframe>
         </div>
     </div>
 
-    <div class="section" id="characters">
-        <h2>👥 Characters</h2>
-        <p>When entering the world, choose your character via the GUI. You can play as:</p>
-        <p style="text-align: center; font-size: 1.1em; color: var(--accent-color);">
-            Cleo • Emma • Rikki • Bella • Charlotte • Nixie • Lyla • Sirena • Mimmi • Ondina • Weilan • Zac • Cam • Evie
-        </p>
-    </div>
-
-    <div class="section" id="abilities">
-        <h2>✨ Abilities & Keybinds</h2>
-        <p><em>Note: Mako Characters have special abilities like Invisibility and Item Pulling.</em></p>
-        <table>
-            <tr>
-                <th>Ability</th>
-                <th>Character(s)</th>
-                <th>Keybind / Trigger</th>
-            </tr>
-            <tr>
-                <td>Ice to Water</td>
-                <td>Cleo, Charlotte, Mako</td>
-                <td><code>Down Key</code></td>
-            </tr>
-            <tr>
-                <td>Water to Ice / Snow</td>
-                <td>Emma, Charlotte, Mako</td>
-                <td><code>Up Key</code></td>
-            </tr>
-            <tr>
-                <td>Water to Jelly</td>
-                <td>Bella</td>
-                <td><code>Up Key</code></td>
-            </tr>
-            <tr>
-                <td>Fire / Heat</td>
-                <td>Rikki</td>
-                <td>Full Moon / <code>Right Key</code> (Water to Air)</td>
-            </tr>
-            <tr>
-                <td>Thunderstorm</td>
-                <td>Ondina, Sirena</td>
-                <td><code>U Key</code></td>
-            </tr>
-            <tr>
-                <td>Turn Invisible</td>
-                <td>Mako Characters</td>
-                <td><code>R Key</code></td>
-            </tr>
-            <tr>
-                <td>Levitate Entities</td>
-                <td>Mako Characters</td>
-                <td><code>G Key</code></td>
-            </tr>
-            <tr>
-                <td>Turn the Tide</td>
-                <td>Zac, Weilan</td>
-                <td><code>B Key</code> (Immunity to Dragon)</td>
-            </tr>
-            <tr>
-                <td>Speed Swim</td>
-                <td>All Mermaids</td>
-                <td>Hold <code>C</code> underwater</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="section" id="items">
-        <h2>🎒 Items & Crafting</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>💍 Magic Items</h3>
-                <ul>
-                    <li><strong>Moon Ring:</strong> Place water on water (Mako only).</li>
-                    <li><strong>Moon Trident:</strong> Combine Trident + Moon Crystal.</li>
-                    <li><strong>Seahorse Powder:</strong> Cures "Mermaid Cold".</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🍔 Food & Drinks</h3>
-                <ul>
-                    <li><strong>Coconut Smoothie:</strong> Turns you into a mermaid (10s).</li>
-                    <li><strong>Arctic Marshmallow:</strong> Crafted with Oysters + Sea Lavender.</li>
-                    <li><strong>Foul Smelling Oysters:</strong> Found in new biomes.</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🪑 Misc</h3>
-                <ul>
-                    <li><strong>Speed Boat:</strong> Fast, doesn't bounce.</li>
-                    <li><strong>Towel:</strong> Dry off instantly (3 Wool).</li>
-                    <li><strong>Glass Dolphin:</strong> Collectible (Normal & Broken).</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="section" id="downloads">
-        <h2>⬇️ Latest Updates</h2>
-        <p>Download the latest versions via Modrinth.</p>
-
-        <div class="update-box">
-            <h3><span class="version-tag">v2.1.9</span> The "Legs" Update <span class="date">Dec 8, 2025</span></h3>
-            <p><strong>Major Visual Upgrade:</strong></p>
-            <ul>
-                <li>✨ <strong>Legs are now hidden</strong> when transformed into a mermaid! (This took 10 hours of coding!)</li>
-                <li>Preparation for adding this feature to other mods.</li>
-            </ul>
-            <a href="https://modrinth.com/mod/mako-mermaids-mod/version/2.1.9" target="_blank" class="btn">Download v2.1.9</a>
-        </div>
-
-        <div class="update-box">
-            <h3><span class="version-tag">v2.1.8</span> Fixes <span class="date">Dec 4, 2025</span></h3>
-            <ul>
-                <li>Fixed Zac's Tail glitch.</li>
-                <li>Made speed-swim slightly slower for better control.</li>
-            </ul>
-        </div>
-
-        <div class="update-box">
-            <h3><span class="version-tag">v2.1.7</span> Biomes & Tails <span class="date">Dec 1, 2025</span></h3>
-            <ul>
-                <li><strong>New Biomes:</strong> Baltic Sea & Beaufort Sea (Ice Desert).</li>
-                <li><strong>New Tails:</strong> Updated textures for all chars (by Reyeas). Bella has extra tails!</li>
-                <li><strong>Commands:</strong> Added <code>/needairtrue</code> and <code>/needairfalse</code>.</li>
-                <li>Turn the Tide now lasts 5 seconds with a chat message.</li>
-            </ul>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>Mod created by <strong>MakoModDev</strong> | Textures by <strong>Reyeas</strong> & <strong>Gemini AI</strong></p>
-        <p>Sound effects from Pixabay. Not affiliated with the TV Show official copyright holders.</p>
-        <br>
-        <p><a href="https://github.com/DEIN_GITHUB_NAME/DEIN_REPO_NAME/edit/main/index.html" target="_blank" style="color: #555; text-decoration: none;">✏️ Admin: Edit Page</a></p>
-    </footer>
-
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
