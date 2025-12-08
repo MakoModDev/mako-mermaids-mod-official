@@ -6,13 +6,11 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="bg-bubbles"></div>
-
     <nav>
         <div class="logo">Mako Mod</div>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="wiki.html" style="color:var(--moon-glow)">Wiki & Items</a>
+            <a href="wiki.html" style="color:var(--moon-glow)">Wiki</a>
             <a href="downloads.html">Downloads</a>
         </div>
     </nav>
@@ -21,121 +19,38 @@
         
         <div class="card hidden">
             <h2>👥 Playable Characters</h2>
-            <p>Use <code>/change_character</code> to switch. Use <code>/what_character</code> to check who you are.</p>
-            <p style="margin-top: 10px; color: var(--moon-glow); text-align: center; font-weight: bold;">
+            <p>Use <code>/change_character</code> to switch.</p>
+            <p style="margin-top: 10px; color: var(--moon-glow); text-align: center;">
                 Cleo • Emma • Rikki • Bella • Charlotte • Nixie • Lyla • Sirena • Mimmi • Ondina • Weilan • Zac • Cam • Evie
             </p>
         </div>
 
         <div class="card hidden">
-            <h2>⚡ Elemental Abilities & Keybinds</h2>
-            <p><em>Note: You must be transformed to use most powers.</em></p>
+            <h2>⚡ Abilities & Keybinds</h2>
             <table>
-                <tr>
-                    <th>Ability</th>
-                    <th>Character(s)</th>
-                    <th>Keybind / Trigger</th>
-                </tr>
-                <tr>
-                    <td>Ice to Water</td>
-                    <td>Cleo, Charlotte, Mako</td>
-                    <td><code>Down Key</code></td>
-                </tr>
-                <tr>
-                    <td>Water to Ice / Snow</td>
-                    <td>Emma, Charlotte, Mako</td>
-                    <td><code>Up Key</code></td>
-                </tr>
-                <tr>
-                    <td>Water to Jelly</td>
-                    <td>Bella</td>
-                    <td><code>Up Key</code></td>
-                </tr>
-                <tr>
-                    <td>Fire / Heat / Boil</td>
-                    <td>Rikki, Charlotte</td>
-                    <td><code>Right Key</code> (Immune to fire on Full Moon)</td>
-                </tr>
-                <tr>
-                    <td>Thunderstorm</td>
-                    <td>Ondina, Sirena</td>
-                    <td><code>U Key</code></td>
-                </tr>
-                <tr>
-                    <td>Invisibility</td>
-                    <td>Mako Characters</td>
-                    <td><code>R Key</code></td>
-                </tr>
-                <tr>
-                    <td>Levitate Entities</td>
-                    <td>Mako Characters</td>
-                    <td><code>G Key</code></td>
-                </tr>
-                <tr>
-                    <td>Turn the Tide</td>
-                    <td>Zac, Weilan</td>
-                    <td><code>B Key</code> (5s Immunity to Water Dragon)</td>
-                </tr>
-                <tr>
-                    <td>Speed Swim</td>
-                    <td>All Mermaids</td>
-                    <td>Hold <code>C</code> underwater</td>
-                </tr>
+                <tr><th>Ability</th><th>Character</th><th>Trigger</th></tr>
+                <tr><td>Ice to Water</td><td>Cleo, Charlotte, Mako</td><td><code>Down Key</code></td></tr>
+                <tr><td>Water to Ice</td><td>Emma, Charlotte, Mako</td><td><code>Up Key</code></td></tr>
+                <tr><td>Water to Jelly</td><td>Bella</td><td><code>Up Key</code></td></tr>
+                <tr><td>Fire / Heat</td><td>Rikki, Charlotte</td><td><code>Right Key</code></td></tr>
+                <tr><td>Thunderstorm</td><td>Ondina, Sirena</td><td><code>U Key</code></td></tr>
+                <tr><td>Invisibility</td><td>Mako Characters</td><td><code>R Key</code></td></tr>
+                <tr><td>Levitate</td><td>Mako Characters</td><td><code>G Key</code></td></tr>
+                <tr><td>Turn the Tide</td><td>Zac, Weilan</td><td><code>B Key</code></td></tr>
+                <tr><td>Speed Swim</td><td>All Mermaids</td><td>Hold <code>C</code> underwater</td></tr>
             </table>
         </div>
 
         <div class="card hidden">
-            <h2>🎒 Items & Crafting</h2>
+            <h2>🎒 Items & Recipes</h2>
             <div class="item-grid">
-                <div class="item-card">
-                    <h4>💍 Moon Ring</h4>
-                    <p>Allows Mako characters to place water. Crafted with 5 Iron + 1 Moon Crystal.</p>
-                </div>
-                <div class="item-card">
-                    <h4>🔱 Moon Trident</h4>
-                    <p>Combine a Trident with a Moon Crystal. Powerful weapon.</p>
-                </div>
-                <div class="item-card">
-                    <h4>🧂 Seahorse Powder</h4>
-                    <p>Cures the "Mermaid Cold" effect (found in cold areas). Mako chars only.</p>
-                </div>
-                <div class="item-card">
-                    <h4>🍹 Coconut Smoothie</h4>
-                    <p>Drink to become a mermaid after 10 seconds. (Do not place block!).</p>
-                </div>
-                <div class="item-card">
-                    <h4>🚤 Speed Boat</h4>
-                    <p>Crafted with Iron. Fast, doesn't bounce, correct sitting position.</p>
-                </div>
-                <div class="item-card">
-                    <h4>🧖‍♀️ Towel</h4>
-                    <p>Crafted with 3 Wool. Instantly dries you off and turns you human.</p>
-                </div>
-                <div class="item-card">
-                    <h4>💎 Moon Crystal Ore</h4>
-                    <p>Spawns in Baltic & Beaufort Sea (Y 0-40). Hard to mine.</p>
-                </div>
-                <div class="item-card">
-                    <h4>🐬 Glass Dolphin</h4>
-                    <p>Collectible item. Comes in Normal and Broken versions.</p>
-                </div>
+                <div class="item-card"><h4>💍 Moon Ring</h4><p>Craft: 5 Iron + 1 Moon Crystal.</p></div>
+                <div class="item-card"><h4>🔱 Moon Trident</h4><p>Combine Trident + Moon Crystal.</p></div>
+                <div class="item-card"><h4>🧂 Seahorse Powder</h4><p>Cures Mermaid Cold.</p></div>
+                <div class="item-card"><h4>🍹 Coconut Smoothie</h4><p>Drink to transform (10s).</p></div>
+                <div class="item-card"><h4>🐬 Glass Dolphin</h4><p>4 Blue Glass + 3 Cyan Glass.</p></div>
+                <div class="item-card"><h4>🚤 Speed Boat</h4><p>Fast boat, made of iron.</p></div>
             </div>
-        </div>
-
-        <div class="card hidden">
-            <h2>🎮 Commands & Gestures</h2>
-            <ul>
-                <li><code>/change_character</code> - Opens the selection GUI.</li>
-                <li><code>/needairtrue</code> - You need to breathe underwater (gives 1h Water Breathing).</li>
-                <li><code>/needairfalse</code> - Infinite underwater breathing.</li>
-            </ul>
-            <br>
-            <p><strong>Gestures (Python Script required via Discord):</strong></p>
-            <ul>
-                <li>Emma: Water to Ice</li>
-                <li>Bella: Water to Jelly</li>
-                <li>Mako: Levitate Mobs</li>
-            </ul>
         </div>
 
     </div>
