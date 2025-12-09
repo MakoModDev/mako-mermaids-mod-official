@@ -89,4 +89,41 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.key === "Escape") closeLightbox();
         }
     });
+        // === NEU: HAMBURGER MENÜ LOGIK ===
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            // Menü rein/raus schieben
+            navLinks.classList.toggle('active');
+            // Hamburger zu X animieren
+            hamburger.classList.toggle('toggle');
+        });
+
+        // Menü schließen, wenn man einen Link klickt
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+    }
+
+    // === NEU: PFEIL FLASH EFFECT (Fix für Mobile) ===
+    // Wir nutzen nicht mehr CSS :hover für Mobile, sondern JS
+    const arrows = document.querySelectorAll('.lightbox-arrow');
+    
+    arrows.forEach(arrow => {
+        arrow.addEventListener('click', function() {
+            // Klasse hinzufügen (macht blau)
+            this.classList.add('flash-active');
+            
+            // Nach 200ms Klasse entfernen (macht wieder weiß)
+            setTimeout(() => {
+                this.classList.remove('flash-active');
+            }, 200);
+        });
+    });
+    
 });
