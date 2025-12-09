@@ -1,6 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. SCROLL ANIMATION (Das hattest du schon)
+    /* =========================================
+       1. HAMBURGER MENÜ (WICHTIG FÜR MOBILE!)
+       ========================================= */
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', (e) => {
+            // Verhindert, dass der Klick woanders hin durchgeht
+            e.stopPropagation();
+            
+            // Menü rein/raus schieben
+            navLinks.classList.toggle('active');
+            // Hamburger zu X animieren
+            hamburger.classList.toggle('toggle');
+            
+            // Debugging (Falls es immer noch nicht geht, entfernt das // davor)
+            // alert("Menü geklickt!"); 
+        });
+
+        // Menü schließen, wenn man einen Link klickt
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+
+        // Menü schließen, wenn man daneben klickt
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('toggle');
+            }
+        });
+    } else {
+        console.error("Hamburger oder NavLinks nicht gefunden!");
+    }
+
+    /* =========================================
+       2. SCROLL ANIMATION (Einblenden)
+       ========================================= */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -12,118 +53,79 @@ document.addEventListener("DOMContentLoaded", () => {
     hiddenElements.forEach((el) => observer.observe(el));
 
 
-    // 2. LIGHTBOX GALERIE LOGIK (Das ist NEU)
+    /* =========================================
+       3. LIGHTBOX GALERIE
+       ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.close-btn');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
-    
-    // Alle Bilder aus der Galerie holen
-    // Wichtig: Wir suchen nur Bilder, die die Klasse "gallery-img" haben!
     const galleryImages = Array.from(document.querySelectorAll('.gallery-img'));
     
-    let currentIndex = 0; // Merken, welches Bild gerade offen ist
+    let currentIndex = 0;
 
-    // Funktion: Öffne Lightbox mit bestimmtem Bild
-    function openLightbox(index) {
-        currentIndex = index;
-        lightbox.style.display = "block";
-        lightboxImg.src = galleryImages[currentIndex].src;
-        lightboxImg.alt = galleryImages[currentIndex].alt;
-    }
-
-    // Funktion: Nächstes Bild
-    function showNext() {
-        currentIndex++;
-        if (currentIndex >= galleryImages.length) {
-            currentIndex = 0; // Wenn am Ende, fang von vorne an
+    if (lightbox) {
+        function openLightbox(index) {
+            currentIndex = index;
+            lightbox.style.display = "block";
+            lightboxImg.src = galleryImages[currentIndex].src;
+            lightboxImg.alt = galleryImages[currentIndex].alt;
         }
-        lightboxImg.src = galleryImages[currentIndex].src;
-    }
 
-    // Funktion: Vorheriges Bild
-    function showPrev() {
-        currentIndex--;
-        if (currentIndex < 0) {
-            currentIndex = galleryImages.length - 1; // Wenn am Anfang, geh zum letzten
+        function showNext() {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentIndex].src;
         }
-        lightboxImg.src = galleryImages[currentIndex].src;
-    }
 
-    // Funktion: Schließen
-    function closeLightbox() {
-        lightbox.style.display = "none";
-    }
-
-    // EVENT LISTENER (Klicks abfangen)
-    
-    // Klick auf ein Galerie-Bild
-    galleryImages.forEach((img, index) => {
-        img.addEventListener('click', () => {
-            openLightbox(index);
-        });
-        // Zeiger ändern damit man weiß, dass es klickbar ist
-        img.style.cursor = "pointer";
-    });
-
-    // Klick auf Schließen
-    closeBtn.addEventListener('click', closeLightbox);
-
-    // Klick auf Pfeile
-    nextBtn.addEventListener('click', showNext);
-    prevBtn.addEventListener('click', showPrev);
-
-    // Klick neben das Bild (zum Schließen)
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            closeLightbox();
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            lightboxImg.src = galleryImages[currentIndex].src;
         }
-    });
 
-    // Tastensteuerung (Pfeiltasten & ESC)
-    document.addEventListener('keydown', (e) => {
-        if (lightbox.style.display === "block") {
-            if (e.key === "ArrowLeft") showPrev();
-            if (e.key === "ArrowRight") showNext();
-            if (e.key === "Escape") closeLightbox();
-        }
-    });
-        // === NEU: HAMBURGER MENÜ LOGIK ===
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            // Menü rein/raus schieben
-            navLinks.classList.toggle('active');
-            // Hamburger zu X animieren
-            hamburger.classList.toggle('toggle');
+        galleryImages.forEach((img, index) => {
+            img.addEventListener('click', () => openLightbox(index));
+            img.style.cursor = "pointer";
         });
 
-        // Menü schließen, wenn man einen Link klickt
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('toggle');
-            });
+        closeBtn.addEventListener('click', () => lightbox.style.display = "none");
+        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+        
+        // Klick neben das Bild schließt es
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.style.display = "none";
         });
     }
 
-    // === NEU: PFEIL FLASH EFFECT (Fix für Mobile) ===
-    // Wir nutzen nicht mehr CSS :hover für Mobile, sondern JS
-    const arrows = document.querySelectorAll('.lightbox-arrow');
-    
-    arrows.forEach(arrow => {
-        arrow.addEventListener('click', function() {
-            // Klasse hinzufügen (macht blau)
-            this.classList.add('flash-active');
-            
-            // Nach 200ms Klasse entfernen (macht wieder weiß)
-            setTimeout(() => {
-                this.classList.remove('flash-active');
-            }, 200);
-        });
+    /* =========================================
+       4. CLICK SOUNDS & BUBBLES
+       ========================================= */
+    // Click Sound (nur wenn Datei existiert)
+    const clickSound = new Audio('assets/files/click.mp3');
+    clickSound.volume = 0.2;
+
+    document.addEventListener('click', () => {
+        clickSound.currentTime = 0;
+        clickSound.play().catch(() => {}); // Fehler ignorieren
     });
-    
+
+    // Bubbles (Nur auf PC, Handy ignorieren wir via CSS)
+    document.addEventListener('mousemove', (e) => {
+        if (window.innerWidth > 768 && Math.random() < 0.1) { 
+            createBubble(e.pageX, e.pageY);
+        }
+    });
+
+    function createBubble(x, y) {
+        const bubble = document.createElement('div');
+        bubble.classList.add('mouse-bubble');
+        const size = Math.random() * 15 + 5;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${x}px`;
+        bubble.style.top = `${y}px`;
+        document.body.appendChild(bubble);
+        setTimeout(() => bubble.remove(), 1000);
+    }
 });
