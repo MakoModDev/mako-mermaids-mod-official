@@ -34,7 +34,6 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-
 /* 3. NAVIGATION (Inklusive Hamburger) */
 nav {
     display: flex;
@@ -56,13 +55,12 @@ nav {
     text-shadow: 0 0 15px var(--moon-glow);
     font-weight: bold;
     z-index: 1001;
-    text-decoration: none; /* NEU: Damit der Link nicht unterstrichen ist */
+    text-decoration: none;
 }
 
-
-/* Hamburger Icon */
+/* Hamburger Icon (am PC unsichtbar) */
 .hamburger {
-    display: none; /* Am PC unsichtbar */
+    display: none;
     cursor: pointer;
     flex-direction: column;
     gap: 5px;
@@ -78,7 +76,7 @@ nav {
     border-radius: 5px;
 }
 
-/* Navigation Links */
+/* Navigation Links (PC Version) */
 .nav-links {
     display: flex;
     align-items: center;
@@ -96,6 +94,8 @@ nav {
     color: var(--moon-glow);
     text-shadow: 0 0 10px var(--moon-glow);
 }
+
+
 
 /* 4. HERO SECTION */
 .hero {
