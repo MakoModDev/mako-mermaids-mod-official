@@ -56,7 +56,9 @@ nav {
     text-shadow: 0 0 15px var(--moon-glow);
     font-weight: bold;
     z-index: 1001;
+    text-decoration: none; /* NEU: Damit der Link nicht unterstrichen ist */
 }
+
 
 /* Hamburger Icon */
 .hamburger {
