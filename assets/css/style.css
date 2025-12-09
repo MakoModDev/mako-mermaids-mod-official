@@ -16,16 +16,24 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* 2. BODY & BACKGROUND */
+/* Update ganz oben in style.css */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* VERBIETET seitliches Scrollen */
+    position: relative; /* Wichtig für Mobile */
+}
+
 body {
     background: radial-gradient(circle at top right, #001f3f, var(--deep-sea));
     color: var(--text);
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
     min-height: 100vh;
     line-height: 1.6;
     -webkit-text-size-adjust: 100%;
 }
+
 
 /* 3. NAVIGATION (Inklusive Hamburger) */
 nav {
