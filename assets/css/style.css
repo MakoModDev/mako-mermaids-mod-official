@@ -1,15 +1,15 @@
 /* =========================================
    MAKO MERMAIDS MOD - OFFICIAL STYLE
-   Theme: Deep Sea & Moon Pool (Glassmorphism)
+   (Mobile Optimized Version)
    ========================================= */
 
 /* 1. FONTS & VARIABLES */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap');
 
 :root {
-    --deep-sea: #001220;       /* Fast Schwarz-Blau */
-    --ocean: #004e92;          /* Mittelblau */
-    --moon-glow: #00d2ff;      /* Helles Cyan (Mondpool) */
+    --deep-sea: #001220;
+    --ocean: #004e92;
+    --moon-glow: #00d2ff;
     --glass: rgba(255, 255, 255, 0.08);
     --glass-border: rgba(255, 255, 255, 0.2);
     --text: #ffffff;
@@ -26,9 +26,11 @@ body {
     background: radial-gradient(circle at top right, #001f3f, var(--deep-sea));
     color: var(--text);
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden; /* Verhindert seitliches Scrollen */
+    overflow-x: hidden;
     min-height: 100vh;
     line-height: 1.6;
+    /* WICHTIG: Verhindert automatisches Zoomen auf iPhones */
+    -webkit-text-size-adjust: 100%;
 }
 
 /* 3. NAVIGATION */
@@ -37,8 +39,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    backdrop-filter: blur(10px); /* Milchglas-Effekt */
-    background: rgba(0, 18, 32, 0.7);
+    backdrop-filter: blur(10px);
+    background: rgba(0, 18, 32, 0.85); /* Etwas dunkler für Lesbarkeit */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -67,7 +69,7 @@ nav {
     text-shadow: 0 0 10px var(--moon-glow);
 }
 
-/* 4. HERO SECTION (Startbildschirm) */
+/* 4. HERO SECTION */
 .hero {
     min-height: 80vh;
     display: flex;
@@ -81,7 +83,6 @@ nav {
 h1 {
     font-size: 4rem;
     font-family: 'Playfair Display', serif;
-    /* Text-Verlauf von Weiß zu Cyan */
     background: linear-gradient(to right, #fff, var(--moon-glow));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -103,13 +104,7 @@ h1 {
     padding: 40px;
     border-radius: 20px;
     margin-bottom: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(0, 210, 255, 0.1);
-    border-color: rgba(0, 210, 255, 0.3);
+    transition: transform 0.3s ease;
 }
 
 h2 {
@@ -122,7 +117,7 @@ h2 {
 
 h3 { margin-bottom: 10px; color: #fff; }
 
-/* 6. BUTTONS (Glow Effect) */
+/* 6. BUTTONS */
 .btn-glow {
     background: transparent;
     border: 2px solid var(--moon-glow);
@@ -147,7 +142,7 @@ h3 { margin-bottom: 10px; color: #fff; }
     transform: scale(1.05);
 }
 
-/* 7. WIKI TABLES (Für Abilities) */
+/* 7. WIKI TABLES */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -170,9 +165,7 @@ th {
     font-size: 0.9rem;
 }
 
-tr:hover { background: rgba(255,255,255,0.05); }
-
-/* 8. ITEM GRID (Für Items & Biome) */
+/* 8. ITEM GRID */
 .item-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -185,16 +178,6 @@ tr:hover { background: rgba(255,255,255,0.05); }
     padding: 20px;
     border-radius: 10px;
     border-left: 3px solid var(--moon-glow);
-    transition: 0.2s;
-}
-
-.item-card:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-.item-card h3, .item-card h4 {
-    margin-top: 0;
-    color: var(--moon-glow);
 }
 
 code {
@@ -202,10 +185,10 @@ code {
     padding: 2px 6px;
     border-radius: 4px;
     font-family: monospace;
-    color: #ffd700; /* Gold/Gelb für Commands */
+    color: #ffd700;
 }
 
-/* 9. GALERIE GRID */
+/* 9. GALERIE */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -216,20 +199,12 @@ code {
 .gallery-img {
     width: 100%;
     height: 220px;
-    object-fit: cover; /* Schneidet Bilder sauber zu */
+    object-fit: cover;
     border-radius: 10px;
     border: 2px solid var(--glass-border);
-    transition: 0.3s;
 }
 
-.gallery-img:hover {
-    transform: scale(1.03);
-    border-color: var(--moon-glow);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
-    z-index: 10;
-}
-
-/* 10. FOOTER & SOCIAL MEDIA */
+/* 10. FOOTER & SOCIALS */
 footer {
     text-align: center;
     padding: 60px 20px;
@@ -238,51 +213,91 @@ footer {
     border-top: 1px solid var(--glass-border);
 }
 
-.social-links { margin-bottom: 30px; }
-
 .social-btn {
     display: inline-block;
-    padding: 12px 25px;
-    margin: 8px;
+    padding: 12px 20px;
+    margin: 8px 4px; /* Mehr Abstand für Finger */
     text-decoration: none;
     color: white;
     border-radius: 8px;
     font-weight: bold;
-    transition: 0.3s;
     font-size: 0.95rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
-.social-btn:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.2);
-}
+.tt { background: #000000; border: 1px solid #333; }
+.dc { background: #5865F2; }
+.md { background: #1bd96a; color: #000; }
+.cf { background: #F16436; }
+.mc { background: #1C262F; border: 1px solid #555; }
+.yt { background: #FF0000; }
 
-/* Social Colors */
-.tt { background: #000000; border: 1px solid #333; } /* TikTok */
-.dc { background: #5865F2; } /* Discord */
-.md { background: #1bd96a; color: #000; } /* Modrinth */
-.cf { background: #F16436; } /* CurseForge */
-.mc { background: #1C262F; border: 1px solid #555; } /* MCreator */
-.yt { background: #FF0000; } /* YouTube */
+/* 11. ANIMATIONEN */
+.hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.show { opacity: 1; transform: translateY(0); }
 
-/* 11. ANIMATIONEN (Fade In) */
-.hidden {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease; /* Weiches Einblenden */
-}
 
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 12. MOBILE OPTIMIERUNG (Handy) */
+/* =========================================
+   🚨 MOBILE FIX (HIER PASSIERT DIE MAGIE) 🚨
+   ========================================= */
 @media (max-width: 768px) {
-    h1 { font-size: 2.5rem; }
-    nav { flex-direction: column; padding: 15px; }
-    .nav-links { margin-top: 15px; }
-    .nav-links a { margin: 0 10px; font-size: 0.9rem; }
-    .gallery-grid { grid-template-columns: 1fr; } /* Bilder untereinander auf Handy */
+    
+    /* 1. Schriftarten lesbar machen */
+    html { font-size: 16px; } /* Basisgröße erzwingen */
+    
+    h1 { font-size: 2.2rem; line-height: 1.2; }
+    h2 { font-size: 1.8rem; }
+    
+    /* 2. Menü untereinander statt nebeneinander */
+    nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .nav-links {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-links a {
+        margin: 5px 0;
+        padding: 12px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 8px;
+        text-align: center;
+        display: block; /* Macht den ganzen Bereich klickbar */
+    }
+
+    /* 3. Abstände verkleinern, damit Platz ist */
+    .container { padding: 30px 15px; }
+    .card { padding: 20px; }
+    .hero { min-height: 60vh; }
+
+    /* 4. DAS WICHTIGSTE: TABELLEN-FIX */
+    /* Macht die Tabelle seitlich scrollbar, statt alles klein zu zoomen */
+    table {
+        display: block;
+        overflow-x: auto; /* Erlaubt seitliches Wischen */
+        white-space: nowrap; /* Verhindert Umbrüche in Zellen */
+        -webkit-overflow-scrolling: touch; /* Flüssiges Scrollen auf iPhone */
+    }
+    
+    th, td {
+        padding: 10px;
+        font-size: 0.9rem; /* Textgröße normal halten */
+    }
+
+    /* 5. Galerie Bilder untereinander */
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Ein Bild pro Zeile */
+    }
+    
+    /* 6. Social Buttons untereinander für bessere Klickbarkeit */
+    .social-btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+    }
 }
