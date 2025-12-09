@@ -264,16 +264,31 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
     /* Burger sichtbar */
     .hamburger { display: flex; }
 
-    /* Menü verstecken */
+        /* Mobile Menü (versteckt) */
     .nav-links {
-        position: fixed; top: 0; right: -100%;
-        height: 100vh; width: 70%;
+        position: fixed;
+        top: 0;
+        right: -100vw; /* Schiebt es komplett aus dem Sichtfeld */
+        height: 100vh;
+        width: 70%;
         background: rgba(0, 18, 32, 0.98);
-        flex-direction: column; justify-content: center;
-        transition: 0.4s ease-in-out;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 0.4s ease-in-out;
+        transform: translateX(0); /* Startposition */
+        
+        /* WICHTIG: Damit man nicht aus Versehen hinscrollt */
+        visibility: hidden; 
+        overflow-x: hidden;
     }
-    .nav-links.active { right: 0; }
-    .nav-links a { margin: 20px 0; font-size: 1.5rem; }
+
+    /* Wenn Menü offen ist */
+    .nav-links.active {
+        transform: translateX(-100vw); /* Schiebt es ins Bild rein */
+        right: -30%; /* Korrektur damit es passt */
+        visibility: visible;
+    }
+   size: 1.5rem; }
 
     /* Burger Animation */
     .hamburger.toggle span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
