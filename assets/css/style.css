@@ -260,53 +260,60 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
 }
 
 /* =========================================
-   🚨 MOBILE FIX (HIER PASSIERT DIE MAGIE)
+/* =========================================
+   🚨 MOBILE FIX (DIE NEUE, SICHERE VERSION)
    ========================================= */
 @media (max-width: 768px) {
-    /* Burger sichtbar */
+    /* WICHTIG: Verhindert seitliches Scrollen auf der ganzen Seite */
+    html, body {
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Burger sichtbar machen */
     .hamburger { display: flex; }
 
-            /* Mobile Menü (Versteckt) */
+    /* Menü verstecken (Neue Methode!) */
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%; /* Startet komplett rechts außerhalb des Bildschirms */
+        right: 0; /* Fest am rechten Rand */
         height: 100vh;
-        width: 100%; /* Nimmt den GANZEN Bildschirm ein (besser gegen Rauszoomen) */
+        width: 100%; /* Volle Breite */
         background: rgba(0, 18, 32, 0.98);
         backdrop-filter: blur(20px);
         
-        /* Flexbox zum Zentrieren des Inhalts */
-        display: flex;
+        /* Flexbox zum Zentrieren */
         flex-direction: column;
         justify-content: center;
         align-items: center;
         
-        transition: 0.4s ease-in-out;
-        z-index: 1000; /* Unter dem Hamburger Button, aber über dem Rest */
+        /* Das ist der Trick: Schiebt es 100% nach rechts raus */
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
     }
 
     /* Wenn Menü offen ist */
     .nav-links.active {
-        right: 0; /* Schiebt es exakt auf den Bildschirm */
+        /* Schiebt es zurück auf 0 (sichtbar) */
+        transform: translateX(0);
     }
 
-    /* Links im Menü */
+    /* Links im mobilen Menü größer machen */
     .nav-links a {
         margin: 25px 0;
-        font-size: 2rem; /* Große Schrift für einfache Bedienung */
+        font-size: 2rem;
         display: block;
     }
-   
 
-    /* Burger Animation */
+    /* Burger Animation zum X */
     .hamburger.toggle span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
     .hamburger.toggle span:nth-child(2) { opacity: 0; }
     .hamburger.toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-    /* Fixes */
+    /* Andere Mobile Fixes */
     table { display: block; overflow-x: auto; white-space: nowrap; }
     .gallery-grid { grid-template-columns: 1fr; }
-    .mouse-bubble { display: none; } /* Akku sparen */
+    .mouse-bubble { display: none; }
     h1 { font-size: 2.5rem; }
 }
