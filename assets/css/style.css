@@ -301,3 +301,88 @@ footer {
         text-align: center;
     }
 }
+
+/* =========================================
+   LIGHTBOX (Bilder Großansicht)
+   ========================================= */
+
+/* Das Hintergrund-Fenster (Standardmäßig unsichtbar) */
+.lightbox {
+    display: none; /* Versteckt */
+    position: fixed;
+    z-index: 2000; /* Ganz weit oben über allem */
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.95); /* Fast schwarzer Hintergrund */
+    backdrop-filter: blur(5px);
+}
+
+/* Das Bild im Zentrum */
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 1000px; /* Nicht breiter als 1000px */
+    max-height: 80vh; /* Nicht höher als 80% des Bildschirms */
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
+    animation: zoomIn 0.3s; /* Kleiner Zoom-Effekt beim Öffnen */
+}
+
+@keyframes zoomIn {
+    from {transform:scale(0.8); opacity: 0;}
+    to {transform:scale(1); opacity: 1;}
+}
+
+/* Der Schließen-Button (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2001;
+}
+.close-btn:hover { color: var(--moon-glow); }
+
+/* Die Pfeile (Links & Rechts) */
+.lightbox-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 2001;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Positionierung der Pfeile */
+.next { right: 0; border-radius: 3px 0 0 3px; }
+.prev { left: 0; border-radius: 3px 0 0 3px; }
+
+.lightbox-arrow:hover {
+    background-color: var(--moon-glow);
+    color: var(--deep-sea);
+}
+
+/* Mobile Anpassung */
+@media (max-width: 768px) {
+    .lightbox-content { width: 95%; }
+    .lightbox-arrow { padding: 10px; font-size: 20px; }
+}
+
