@@ -1,46 +1,11 @@
-/* =========================================
-   MAKO MERMAIDS MOD - OFFICIAL STYLE
-   (Mobile Optimized Version)
-   ========================================= */
-
-/* 1. FONTS & VARIABLES */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap');
-
-:root {
-    --deep-sea: #001220;
-    --ocean: #004e92;
-    --moon-glow: #00d2ff;
-    --glass: rgba(255, 255, 255, 0.08);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --text: #ffffff;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* 2. BODY & BACKGROUND */
-body {
-    background: radial-gradient(circle at top right, #001f3f, var(--deep-sea));
-    color: var(--text);
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    min-height: 100vh;
-    line-height: 1.6;
-    /* WICHTIG: Verhindert automatisches Zoomen auf iPhones */
-    -webkit-text-size-adjust: 100%;
-}
-
-/* 3. NAVIGATION */
+/* Update für NAVIGATION */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
+    padding: 15px 30px; /* Etwas kleiner für mehr Platz */
     backdrop-filter: blur(10px);
-    background: rgba(0, 18, 32, 0.85); /* Etwas dunkler für Lesbarkeit */
+    background: rgba(0, 18, 32, 0.9);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -49,10 +14,35 @@ nav {
 
 .logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--moon-glow);
     text-shadow: 0 0 15px var(--moon-glow);
     font-weight: bold;
+    z-index: 1001; /* Logo immer über dem Menü */
+}
+
+/* Hamburger Menü (Standardmäßig unsichtbar auf PC) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--moon-glow);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+/* Navigation Links (PC) */
+.nav-links {
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a {
@@ -61,328 +51,57 @@ nav {
     margin-left: 30px;
     font-weight: 600;
     transition: 0.3s;
-    font-size: 1.1rem;
 }
 
-.nav-links a:hover {
-    color: var(--moon-glow);
-    text-shadow: 0 0 10px var(--moon-glow);
-}
-
-/* 4. HERO SECTION */
-.hero {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-}
-
-h1 {
-    font-size: 4rem;
-    font-family: 'Playfair Display', serif;
-    background: linear-gradient(to right, #fff, var(--moon-glow));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
-    line-height: 1.1;
-}
-
-/* 5. CARDS & CONTAINER */
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 50px 20px;
-}
-
-.card {
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    padding: 40px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease;
-}
-
-h2 {
-    color: var(--moon-glow);
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-h3 { margin-bottom: 10px; color: #fff; }
-
-/* 6. BUTTONS */
-.btn-glow {
-    background: transparent;
-    border: 2px solid var(--moon-glow);
-    color: var(--moon-glow);
-    padding: 15px 35px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: 0.4s;
-    display: inline-block;
-    margin: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.btn-glow:hover {
-    background: var(--moon-glow);
-    color: var(--deep-sea);
-    box-shadow: 0 0 25px var(--moon-glow);
-    transform: scale(1.05);
-}
-
-/* 7. WIKI TABLES */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-th {
-    background: rgba(0, 210, 255, 0.1);
-    color: var(--moon-glow);
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-/* 8. ITEM GRID */
-.item-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.item-card {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 10px;
-    border-left: 3px solid var(--moon-glow);
-}
-
-code {
-    background: rgba(0,0,0,0.5);
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-family: monospace;
-    color: #ffd700;
-}
-
-/* 9. GALERIE */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.gallery-img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid var(--glass-border);
-}
-
-/* 10. FOOTER & SOCIALS */
-footer {
-    text-align: center;
-    padding: 60px 20px;
-    margin-top: 80px;
-    background: rgba(0, 0, 0, 0.4);
-    border-top: 1px solid var(--glass-border);
-}
-
-.social-btn {
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 8px 4px; /* Mehr Abstand für Finger */
-    text-decoration: none;
-    color: white;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 0.95rem;
-}
-
-.tt { background: #000000; border: 1px solid #333; }
-.dc { background: #5865F2; }
-.md { background: #1bd96a; color: #000; }
-.cf { background: #F16436; }
-.mc { background: #1C262F; border: 1px solid #555; }
-.yt { background: #FF0000; }
-
-/* 11. ANIMATIONEN */
-.hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-.show { opacity: 1; transform: translateY(0); }
-
-
-/* =========================================
-   🚨 MOBILE FIX (HIER PASSIERT DIE MAGIE) 🚨
-   ========================================= */
-@media (max-width: 768px) {
-    
-    /* 1. Schriftarten lesbar machen */
-    html { font-size: 16px; } /* Basisgröße erzwingen */
-    
-    h1 { font-size: 2.2rem; line-height: 1.2; }
-    h2 { font-size: 1.8rem; }
-    
-    /* 2. Menü untereinander statt nebeneinander */
-    nav {
-        flex-direction: column;
-        padding: 15px;
+/* === FIX FÜR DIE PFEILE (Nur kurz blau leuchten) === */
+/* Desktop: Hover funktioniert normal */
+@media (hover: hover) {
+    .lightbox-arrow:hover {
+        background-color: var(--moon-glow);
+        color: var(--deep-sea);
     }
-    
+}
+
+/* Die "Flash"-Klasse (wird per JS für 0.2s hinzugefügt) */
+.lightbox-arrow.flash-active {
+    background-color: var(--moon-glow) !important;
+    color: var(--deep-sea) !important;
+    transform: scale(1.1);
+}
+
+/* === MOBILE FIX (Hamburger Menü Logik) === */
+@media (max-width: 768px) {
+    /* Burger sichtbar machen */
+    .hamburger { display: flex; }
+
+    /* Menü verstecken und stylen */
     .nav-links {
-        margin-top: 20px;
-        display: flex;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Außerhalb des Bildschirms rechts versteckt */
+        height: 100vh;
+        width: 70%; /* Deckt 70% des Bildschirms ab */
+        background: rgba(0, 18, 32, 0.98);
+        backdrop-filter: blur(20px);
         flex-direction: column;
-        width: 100%;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
     }
-    
+
+    /* Wenn Menü offen ist (Klasse 'active' wird per JS gesetzt) */
+    .nav-links.active {
+        right: 0; /* Reinschieben */
+    }
+
     .nav-links a {
-        margin: 5px 0;
-        padding: 12px;
-        background: rgba(255,255,255,0.05);
-        border-radius: 8px;
-        text-align: center;
-        display: block; /* Macht den ganzen Bereich klickbar */
+        margin: 20px 0;
+        font-size: 1.5rem;
     }
 
-    /* 3. Abstände verkleinern, damit Platz ist */
-    .container { padding: 30px 15px; }
-    .card { padding: 20px; }
-    .hero { min-height: 60vh; }
-
-    /* 4. DAS WICHTIGSTE: TABELLEN-FIX */
-    /* Macht die Tabelle seitlich scrollbar, statt alles klein zu zoomen */
-    table {
-        display: block;
-        overflow-x: auto; /* Erlaubt seitliches Wischen */
-        white-space: nowrap; /* Verhindert Umbrüche in Zellen */
-        -webkit-overflow-scrolling: touch; /* Flüssiges Scrollen auf iPhone */
-    }
-    
-    th, td {
-        padding: 10px;
-        font-size: 0.9rem; /* Textgröße normal halten */
-    }
-
-    /* 5. Galerie Bilder untereinander */
-    .gallery-grid {
-        grid-template-columns: 1fr; /* Ein Bild pro Zeile */
-    }
-    
-    /* 6. Social Buttons untereinander für bessere Klickbarkeit */
-    .social-btn {
-        display: block;
-        width: 100%;
-        margin: 10px 0;
-        text-align: center;
-    }
+    /* Animation für den Hamburger zu einem X */
+    .hamburger.toggle span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .hamburger.toggle span:nth-child(2) { opacity: 0; }
+    .hamburger.toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 }
-
-/* =========================================
-   LIGHTBOX (Bilder Großansicht)
-   ========================================= */
-
-/* Das Hintergrund-Fenster (Standardmäßig unsichtbar) */
-.lightbox {
-    display: none; /* Versteckt */
-    position: fixed;
-    z-index: 2000; /* Ganz weit oben über allem */
-    padding-top: 50px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.95); /* Fast schwarzer Hintergrund */
-    backdrop-filter: blur(5px);
-}
-
-/* Das Bild im Zentrum */
-.lightbox-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 1000px; /* Nicht breiter als 1000px */
-    max-height: 80vh; /* Nicht höher als 80% des Bildschirms */
-    object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
-    animation: zoomIn 0.3s; /* Kleiner Zoom-Effekt beim Öffnen */
-}
-
-@keyframes zoomIn {
-    from {transform:scale(0.8); opacity: 0;}
-    to {transform:scale(1); opacity: 1;}
-}
-
-/* Der Schließen-Button (X) */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    z-index: 2001;
-}
-.close-btn:hover { color: var(--moon-glow); }
-
-/* Die Pfeile (Links & Rechts) */
-.lightbox-arrow {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    transition: 0.3s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    z-index: 2001;
-    background: rgba(0, 0, 0, 0.3);
-}
-
-/* Positionierung der Pfeile */
-.next { right: 0; border-radius: 3px 0 0 3px; }
-.prev { left: 0; border-radius: 3px 0 0 3px; }
-
-.lightbox-arrow:hover {
-    background-color: var(--moon-glow);
-    color: var(--deep-sea);
-}
-
-/* Mobile Anpassung */
-@media (max-width: 768px) {
-    .lightbox-content { width: 95%; }
-    .lightbox-arrow { padding: 10px; font-size: 20px; }
-}
-
