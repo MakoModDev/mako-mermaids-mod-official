@@ -32,7 +32,11 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     -webkit-text-size-adjust: 100%;
+    
+    /* NEU: Schiebt den Inhalt runter, damit das Menü nichts verdeckt */
+    padding-top: 90px; 
 }
+
 
 /* 3. NAVIGATION (Inklusive Hamburger) */
 nav {
@@ -42,11 +46,17 @@ nav {
     padding: 15px 30px;
     backdrop-filter: blur(10px);
     background: rgba(0, 18, 32, 0.9);
-    position: sticky;
+    
+    /* HIER IST DIE ÄNDERUNG: */
+    position: fixed; /* Statt sticky - Zwingt es festzuhalten */
+    width: 100%;     /* Wichtig, damit es über den ganzen Bildschirm geht */
     top: 0;
+    left: 0;         /* Sicherstellen, dass es ganz links anfängt */
+    
     z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
 }
+
 
 .logo {
     font-family: 'Playfair Display', serif;
