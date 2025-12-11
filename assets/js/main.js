@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     /* =========================================
-       1. HAMBURGER MENÜ
+       1. HAMBURGER MENÜ (WICHTIG FÜR MOBILE!)
        ========================================= */
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. SCROLL ANIMATION
+       2. SCROLL ANIMATION (Einblenden)
        ========================================= */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -84,24 +84,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-           /* =========================================
-       4. SOUNDS & BUBBLES (Optimiert)
+       4. SOUNDS & BUBBLES (FINAL FIX)
        ========================================= */
     
-    // Sound laden
+    // --- SOUND ---
+    // Nur laden, wenn Datei da ist
     const clickSound = new Audio('assets/files/click.mp3');
-    clickSound.volume = 0.2; // Leise (20%)
+    clickSound.volume = 0.2;
 
-    // Smart-Click: Sound NUR bei interaktiven Elementen abspielen
     document.addEventListener('click', (e) => {
-        // Prüfen: Hat der Nutzer auf einen Link, Button, Bild oder Code geklickt?
-        if (e.target.closest('a, button, .hamburger, summary, code, .gallery-img, .lightbox-arrow')) {
-            clickSound.currentTime = 0;
-            clickSound.play().catch(() => {}); // Fehler ignorieren
+        // UPDATE: Check ob PC (Breiter als 768px). Wenn Handy -> Kein Sound.
+        if (window.innerWidth > 768) {
+            // UPDATE: .gallery-img entfernt! Sound nur bei echten Buttons/Links.
+            if (e.target.closest('a, button, .hamburger, summary, code, .lightbox-arrow, .close-btn')) {
+                clickSound.currentTime = 0;
+                clickSound.play().catch(() => {}); 
+            }
         }
     });
 
-    // Bubbles (Nur auf PC, Handy ignorieren wir)
+    // --- BUBBLES ---
+    // Nur auf PC (Breiter als 768px)
     document.addEventListener('mousemove', (e) => {
         if (window.innerWidth > 768 && Math.random() < 0.1) { 
             const bubble = document.createElement('div');
@@ -113,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => bubble.remove(), 1000);
         }
     });
-    
 
     /* =========================================
        5. WIKI SEARCH & COPY
