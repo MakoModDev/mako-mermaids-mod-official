@@ -84,15 +84,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       4. SOUNDS & BUBBLES
+           /* =========================================
+       4. SOUNDS & BUBBLES (Optimiert)
        ========================================= */
+    
+    // Sound laden
     const clickSound = new Audio('assets/files/click.mp3');
-    clickSound.volume = 0.2;
-    document.addEventListener('click', () => {
-        clickSound.currentTime = 0;
-        clickSound.play().catch(() => {});
+    clickSound.volume = 0.2; // Leise (20%)
+
+    // Smart-Click: Sound NUR bei interaktiven Elementen abspielen
+    document.addEventListener('click', (e) => {
+        // Prüfen: Hat der Nutzer auf einen Link, Button, Bild oder Code geklickt?
+        if (e.target.closest('a, button, .hamburger, summary, code, .gallery-img, .lightbox-arrow')) {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(() => {}); // Fehler ignorieren
+        }
     });
 
+    // Bubbles (Nur auf PC, Handy ignorieren wir)
     document.addEventListener('mousemove', (e) => {
         if (window.innerWidth > 768 && Math.random() < 0.1) { 
             const bubble = document.createElement('div');
@@ -104,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => bubble.remove(), 1000);
         }
     });
+    
 
     /* =========================================
        5. WIKI SEARCH & COPY
