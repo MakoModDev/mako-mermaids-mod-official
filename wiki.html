@@ -6,10 +6,10 @@
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link rel="stylesheet" href="assets/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
 </head>
 <body>
-                    <nav>
+
+    <nav>
         <a href="index.html" class="logo">Mako Mod</a>
         
         <div class="hamburger">
@@ -23,11 +23,13 @@
             <a href="wiki.html">Wiki</a>
             <a href="downloads.html">Downloads</a>
         </div>
-                    </nav>
+    </nav>
     
-    
-
     <div class="container">
+        
+        <div class="search-wrapper" style="margin-bottom: 30px;">
+            <input type="text" id="wikiSearch" placeholder="🔍 Search for items, abilities, commands..." autocomplete="off">
+        </div>
         
         <div class="card hidden">
             <h2>👥 Playable Characters</h2>
@@ -40,16 +42,20 @@
         <div class="card hidden">
             <h2>⚡ Abilities & Keybinds</h2>
             <table>
-                <tr><th>Ability</th><th>Character</th><th>Trigger</th></tr>
-                <tr><td>Ice to Water</td><td>Cleo, Charlotte, Mako</td><td><code>Down Key</code></td></tr>
-                <tr><td>Water to Ice</td><td>Emma, Charlotte, Mako</td><td><code>Up Key</code></td></tr>
-                <tr><td>Water to Jelly</td><td>Bella</td><td><code>Up Key</code></td></tr>
-                <tr><td>Fire / Heat</td><td>Rikki, Charlotte</td><td><code>Right Key</code></td></tr>
-                <tr><td>Thunderstorm</td><td>Ondina, Sirena</td><td><code>U Key</code></td></tr>
-                <tr><td>Invisibility</td><td>Mako Characters</td><td><code>R Key</code></td></tr>
-                <tr><td>Levitate</td><td>Mako Characters</td><td><code>G Key</code></td></tr>
-                <tr><td>Turn the Tide</td><td>Zac, Weilan</td><td><code>B Key</code></td></tr>
-                <tr><td>Speed Swim</td><td>All Mermaids</td><td>Hold <code>C</code> underwater</td></tr>
+                <thead>
+                    <tr><th>Ability</th><th>Character</th><th>Trigger</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ice to Water</td><td>Cleo, Charlotte, Mako</td><td><code>Down Key</code></td></tr>
+                    <tr><td>Water to Ice</td><td>Emma, Charlotte, Mako</td><td><code>Up Key</code></td></tr>
+                    <tr><td>Water to Jelly</td><td>Bella</td><td><code>Up Key</code></td></tr>
+                    <tr><td>Fire / Heat</td><td>Rikki, Charlotte</td><td><code>Right Key</code></td></tr>
+                    <tr><td>Thunderstorm</td><td>Ondina, Sirena</td><td><code>U Key</code></td></tr>
+                    <tr><td>Invisibility</td><td>Mako Characters</td><td><code>R Key</code></td></tr>
+                    <tr><td>Levitate</td><td>Mako Characters</td><td><code>G Key</code></td></tr>
+                    <tr><td>Turn the Tide</td><td>Zac, Weilan</td><td><code>B Key</code></td></tr>
+                    <tr><td>Speed Swim</td><td>All Mermaids</td><td>Hold <code>C</code> underwater</td></tr>
+                </tbody>
             </table>
         </div>
 
@@ -65,83 +71,50 @@
             </div>
         </div>
 
-    </div>
-            <div class="card">
+        <div class="card">
             <h2>❓ Frequently Asked Questions (FAQ)</h2>
             
             <details style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
-                <summary style="cursor: pointer; font-weight: bold; color: white;">
-                    What Minecraft version is this for?
-                </summary>
-                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">
-                    The mod is currently built for <strong>Minecraft 1.21.8</strong> (NeoForge). <br>
-                    We will update the mod to newer versions as they are released.
-                </p>
+                <summary style="cursor: pointer; font-weight: bold; color: white;">What Minecraft version is this for?</summary>
+                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">The mod is currently built for <strong>Minecraft 1.21.8</strong> (NeoForge). We will update to newer versions as they are released.</p>
             </details>
 
             <details style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
-                <summary style="cursor: pointer; font-weight: bold; color: white;">
-                    Is there a version for Bedrock or a Plugin?
-                </summary>
-                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">
-                    No. This is a Java Edition mod only. Bedrock code is completely different, so a port is not possible. It is also not a plugin for servers.
-                </p>
+                <summary style="cursor: pointer; font-weight: bold; color: white;">Is there a version for Bedrock or a Plugin?</summary>
+                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">No. This is a Java Edition mod only.</p>
             </details>
 
             <details style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
-                <summary style="cursor: pointer; font-weight: bold; color: white;">
-                    Will there be a Fabric version?
-                </summary>
-                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">
-                    No, there are no plans for a Fabric port at this time.
-                </p>
+                <summary style="cursor: pointer; font-weight: bold; color: white;">Will there be a Fabric version?</summary>
+                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">No, there are no plans for a Fabric port at this time.</p>
             </details>
 
             <details style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
-                <summary style="cursor: pointer; font-weight: bold; color: white;">
-                    How do I download and install?
-                </summary>
-                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">
-                    1. Get the .jar file from our <a href="downloads.html" style="color:white; text-decoration:underline;">Downloads Page</a>.<br>
-                    2. Install <strong>NeoForge</strong> for 1.21.8.<br>
-                    3. Drag the file into your <code>.minecraft/mods</code> folder.
-                </p>
+                <summary style="cursor: pointer; font-weight: bold; color: white;">How do I download and install?</summary>
+                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">1. Get the .jar file from our <a href="downloads.html" style="color:white; text-decoration:underline;">Downloads Page</a>.<br>2. Install <strong>NeoForge</strong> for 1.21.8.<br>3. Drag the file into your <code>.minecraft/mods</code> folder.</p>
             </details>
 
             <details style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
-                <summary style="cursor: pointer; font-weight: bold; color: white;">
-                    Why are characters like Lewis included?
-                </summary>
-                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">
-                    To create the ultimate roleplay experience! Side characters help recreate the full story of H2O and Mako Mermaids in Minecraft.
-                </p>
+                <summary style="cursor: pointer; font-weight: bold; color: white;">Why are characters like Lewis included?</summary>
+                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">To create the ultimate roleplay experience! Side characters help recreate the full story.</p>
             </details>
 
             <details style="margin-bottom: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
-                <summary style="cursor: pointer; font-weight: bold; color: white;">
-                    Can I send ideas or suggestions?
-                </summary>
-                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">
-                    Yes! You can share your feedback and ideas in the <code>#feedback</code> channel on our <a href="https://discord.com/invite/8N774c8Ujd" target="_blank" style="color:white;">Discord Server</a>.
-                </p>
+                <summary style="cursor: pointer; font-weight: bold; color: white;">Can I send ideas or suggestions?</summary>
+                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">Yes! Share your feedback in the <code>#feedback</code> channel on our <a href="https://discord.com/invite/8N774c8Ujd" target="_blank" style="color:white;">Discord Server</a>.</p>
             </details>
 
             <details>
-                <summary style="cursor: pointer; font-weight: bold; color: white;">
-                    Why do you use AI for development?
-                </summary>
-                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">
-                    I am a solo developer and not a coding expert. I use AI as a tool to help me write the code and make sure everything works correctly, so you get the best experience possible!
-                </p>
+                <summary style="cursor: pointer; font-weight: bold; color: white;">Why do you use AI for development?</summary>
+                <p style="margin-top: 10px; color: var(--moon-glow); font-size: 0.9rem;">I am a solo developer and not a coding expert. I use AI as a tool to help me write the code and make sure everything works correctly.</p>
             </details>
-            </div>
-    
-        <script src="assets/js/main.js"></script>
-</body>
-            <footer class="hidden">
+        </div>
+
+    </div>
+
+    <footer class="hidden">
         <div class="social-links">
             <h3 style="color:var(--moon-glow); margin-bottom:20px;">Follow the Project</h3>
-            
             <a href="https://tiktok.com/@mako_in_minecraft" target="_blank" class="social-btn tt">TikTok</a>
             <a href="https://discord.com/invite/8N774c8Ujd" target="_blank" class="social-btn dc">Discord</a>
             <a href="https://modrinth.com/project/uohqKoQE" target="_blank" class="social-btn md">Modrinth</a>
@@ -158,9 +131,8 @@
                 ⚖️ Credits & Legal Info
             </a>
         </div>
-            </footer>
-    
-    
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
 </html>
-
-
