@@ -1,5 +1,5 @@
 /* =========================================
-   MAKO MERMAIDS MOD - OFFICIAL STYLE (FINAL v2)
+   MAKO MERMAIDS MOD - OFFICIAL STYLE (FINAL CLEAN)
    ========================================= */
 
 /* 1. FONTS & VARIABLES */
@@ -241,8 +241,7 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
 .hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
 .show { opacity: 1; transform: translateY(0); }
 
-.mouse-bubble { position: absolute; width: 10px; height: 10px; background: rgba(0, 210, 255, 0.6); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); animation: bubbleFloat 1s linear forwards; z-index: 9999; }
-@keyframes bubbleFloat { 100% { transform: translate(-50%, -150%) scale(0); opacity: 0; } }
+/* Animation "bubbleFloat" und ".mouse-bubble" wurden entfernt für bessere Performance */
 
 /* =========================================
    🚨 MOBILE FIX
@@ -265,6 +264,7 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
     
     table { display: block; overflow-x: auto; white-space: nowrap; }
     .gallery-grid { grid-template-columns: 1fr; }
-    .mouse-bubble { display: none; }
+    
+    /* Mouse-Bubble Fix für Mobile entfernt, da Animation global gelöscht wurde */
     h1 { font-size: 2.5rem; }
 }
