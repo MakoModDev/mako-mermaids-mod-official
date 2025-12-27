@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    /* =========================================
-       1. HAMBURGER MENÜ (MOBILE)
-       ========================================= */
+
+    /* 1. HAMBURGER MENÜ */
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
@@ -12,14 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('toggle');
         });
-
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 hamburger.classList.remove('toggle');
             });
         });
-
         document.addEventListener('click', (e) => {
             if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
                 navLinks.classList.remove('active');
@@ -28,77 +24,88 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* =========================================
-       2. SCROLL ANIMATION (Dezent)
-       ========================================= */
+    /* 2. SCROLL ANIMATION */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('show');
         });
     });
     document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-    /* =========================================
-       3. LIGHTBOX GALERIE
-       ========================================= */
+    /* 3. LIGHTBOX GALERIE (FIXED) */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
     const galleryImages = Array.from(document.querySelectorAll('.gallery-img'));
     let currentIndex = 0;
 
     if (lightbox) {
-        function openLightbox(index) {
-            currentIndex = index;
-            lightbox.style.display = "block";
-            lightboxImg.src = galleryImages[currentIndex].src;
-            lightboxImg.alt = galleryImages[currentIndex].alt;
+        function updateLightbox() {
+            const img = galleryImages[currentIndex];
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            if (lightboxCaption) lightboxCaption.textContent = img.alt;
         }
 
-        const closeBtn = document.querySelector('.close-btn');
-        const nextBtn = document.querySelector('.next');
-        const prevBtn = document.querySelector('.prev');
+        function openLightbox(index) {
+            currentIndex = index;
+            lightbox.style.display = "flex"; // Flexbox für Zentrierung aktivieren
+            document.body.classList.add("no-scroll"); // Scrollen verbieten
+            updateLightbox();
+        }
 
+        function closeLightbox() {
+            lightbox.style.display = "none";
+            document.body.classList.remove("no-scroll"); // Scrollen wieder erlauben
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            updateLightbox();
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightbox();
+        }
+
+        // Event Listeners Bilder
         galleryImages.forEach((img, index) => {
             img.addEventListener('click', () => openLightbox(index));
         });
 
-        if(closeBtn) closeBtn.addEventListener('click', () => lightbox.style.display = "none");
-        
-        if(nextBtn) nextBtn.addEventListener('click', (e) => { 
-            e.stopPropagation(); 
-            currentIndex = (currentIndex + 1) % galleryImages.length;
-            lightboxImg.src = galleryImages[currentIndex].src;
-        });
-        
-        if(prevBtn) prevBtn.addEventListener('click', (e) => { 
-            e.stopPropagation(); 
-            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-            lightboxImg.src = galleryImages[currentIndex].src;
+        // Buttons
+        document.querySelector('.close-btn')?.addEventListener('click', closeLightbox);
+        document.querySelector('.next')?.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+        document.querySelector('.prev')?.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+
+        // Klick auf Hintergrund schließt
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
         });
 
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) lightbox.style.display = "none";
+        // TASTATUR STEUERUNG (Pfeiltasten)
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === "flex") {
+                if (e.key === "ArrowRight") showNext();
+                if (e.key === "ArrowLeft") showPrev();
+                if (e.key === "Escape") closeLightbox();
+            }
         });
     }
 
-    /* =========================================
-       4. WIKI SEARCH & COPY
-       ========================================= */
+    /* 4. WIKI SEARCH & COPY */
     const searchInput = document.getElementById('wikiSearch');
     if (searchInput) {
         searchInput.addEventListener('keyup', (e) => {
             const term = e.target.value.toLowerCase();
-            document.querySelectorAll('tbody tr').forEach(row => {
-                row.style.display = row.innerText.toLowerCase().includes(term) ? '' : 'none';
-            });
-            document.querySelectorAll('.item-card').forEach(item => {
-                item.style.display = item.innerText.toLowerCase().includes(term) ? '' : 'none';
+            document.querySelectorAll('tbody tr, .item-card').forEach(el => {
+                el.style.display = el.innerText.toLowerCase().includes(term) ? '' : 'none';
             });
         });
     }
 
+    // Copy Toast erstellen, falls nicht da
     if (!document.getElementById('copy-toast')) {
         const toast = document.createElement('div');
         toast.id = 'copy-toast';
