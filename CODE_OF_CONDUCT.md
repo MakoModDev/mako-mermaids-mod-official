@@ -11,7 +11,7 @@ This isn’t an exhaustive list of things that you can’t do. Rather, take it i
 This code of conduct applies to all spaces managed by the **Mako Mod Dev Team**. This includes **Discord**, **GitHub**, **Modrinth/CurseForge comments**, and any other forums created by the project team which the community uses for communication. In addition, violations of this code outside these spaces may affect a person's ability to participate within them.
 
 ## Reporting
-If you believe someone is violating the code of conduct, we ask that you report it by contacting the team via **Discord** . All reports will be kept confidential.
+If you believe someone is violating the code of conduct, we ask that you report it by contacting the team via our [Discord Server](https://discord.com/invite/8N774c8Ujd). All reports will be kept confidential.
 
 ## Our Standards
 
