@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     /* =========================================
-       1. HAMBURGER MENÜ (WICHTIG FÜR MOBILE!)
+       1. HAMBURGER MENÜ (MOBILE)
        ========================================= */
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. SCROLL ANIMATION (Einblenden - Dezent)
+       2. SCROLL ANIMATION (Dezent)
        ========================================= */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
     /* =========================================
-       3. LIGHTBOX GALERIE (Funktionalität)
+       3. LIGHTBOX GALERIE
        ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -84,9 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       4. WIKI SEARCH & COPY (Nützlich)
+       4. WIKI SEARCH & COPY
        ========================================= */
-    // SUCHE
     const searchInput = document.getElementById('wikiSearch');
     if (searchInput) {
         searchInput.addEventListener('keyup', (e) => {
@@ -100,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // COPY TO CLIPBOARD
     if (!document.getElementById('copy-toast')) {
         const toast = document.createElement('div');
         toast.id = 'copy-toast';
@@ -118,5 +116,4 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
-
 });
