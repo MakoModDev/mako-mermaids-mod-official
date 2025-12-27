@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-    /* 3. LIGHTBOX GALERIE (FIXED) */
+    /* 3. LIGHTBOX GALERIE (SCROLL FIX & KEYBOARD) */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
@@ -49,14 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function openLightbox(index) {
             currentIndex = index;
-            lightbox.style.display = "flex"; // Flexbox für Zentrierung aktivieren
-            document.body.classList.add("no-scroll"); // Scrollen verbieten
+            lightbox.style.display = "flex"; 
+            document.body.classList.add("no-scroll"); // STOPPT SCROLLEN
             updateLightbox();
         }
 
         function closeLightbox() {
             lightbox.style.display = "none";
-            document.body.classList.remove("no-scroll"); // Scrollen wieder erlauben
+            document.body.classList.remove("no-scroll"); // ERLAUBT SCROLLEN
         }
 
         function showNext() {
@@ -69,22 +69,20 @@ document.addEventListener("DOMContentLoaded", () => {
             updateLightbox();
         }
 
-        // Event Listeners Bilder
+        // Klicks
         galleryImages.forEach((img, index) => {
             img.addEventListener('click', () => openLightbox(index));
         });
 
-        // Buttons
         document.querySelector('.close-btn')?.addEventListener('click', closeLightbox);
         document.querySelector('.next')?.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
         document.querySelector('.prev')?.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
 
-        // Klick auf Hintergrund schließt
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // TASTATUR STEUERUNG (Pfeiltasten)
+        // Tasten
         document.addEventListener('keydown', (e) => {
             if (lightbox.style.display === "flex") {
                 if (e.key === "ArrowRight") showNext();
@@ -94,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* 4. WIKI SEARCH & COPY */
+    /* 4. SUCHE & COPY */
     const searchInput = document.getElementById('wikiSearch');
     if (searchInput) {
         searchInput.addEventListener('keyup', (e) => {
@@ -105,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Copy Toast erstellen, falls nicht da
     if (!document.getElementById('copy-toast')) {
         const toast = document.createElement('div');
         toast.id = 'copy-toast';
