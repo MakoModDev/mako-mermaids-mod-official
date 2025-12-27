@@ -32,12 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-    /* 3. LIGHTBOX GALERIE */
+    /* 3. LIGHTBOX (ANTI-JUMP FIX) */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const galleryImages = Array.from(document.querySelectorAll('.gallery-img'));
     let currentIndex = 0;
+    
+    // Variable um Scroll-Position zu speichern
+    let scrollPosition = 0;
 
     if (lightbox) {
         function updateLightbox() {
@@ -48,15 +51,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         function openLightbox(index) {
+            // 1. Merken wo wir sind
+            scrollPosition = window.scrollY;
+            
             currentIndex = index;
             lightbox.style.display = "flex"; 
-            document.body.classList.add("no-scroll");
+            
+            // 2. Body fixieren, damit man nicht scrollt (aber an Ort und Stelle bleibt)
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.style.width = '100%';
+            
             updateLightbox();
         }
 
         function closeLightbox() {
             lightbox.style.display = "none";
-            document.body.classList.remove("no-scroll");
+            
+            // 3. Fixierung lösen und zurückscrollen
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollPosition);
         }
 
         function showNext() {
@@ -81,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        document.addEventListener('keydown', (e) => {
+        window.addEventListener('keydown', (e) => {
             if (lightbox.style.display === "flex") {
                 if (e.key === "ArrowRight") showNext();
                 if (e.key === "ArrowLeft") showPrev();
