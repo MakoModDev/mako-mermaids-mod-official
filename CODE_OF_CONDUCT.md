@@ -1,4 +1,4 @@
-# Mako Mermaids Mod Code of Conduct
+# Mako Mermaids Mod Code of Conduct ( Template with basic stuff )
 
 ## Our Pledge
 Like the technical community as a whole, the **Mako Mermaids Mod** team and community is made up of a mixture of professionals and volunteers from all over the world, working on every aspect of the project - including coding, texturing, testing, and connecting people.
