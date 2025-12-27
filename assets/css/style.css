@@ -1,5 +1,5 @@
 /* =========================================
-   MAKO MERMAIDS MOD - OFFICIAL STYLE (FINAL CLEAN)
+   MAKO MERMAIDS MOD - OFFICIAL STYLE (FINAL FIXED)
    ========================================= */
 
 /* 1. FONTS & VARIABLES */
@@ -19,7 +19,8 @@
 /* 2. BODY & BACKGROUND */
 html, body {
     width: 100%;
-    overflow-x: hidden;
+    max-width: 100%;       /* FIX: Verhindert seitliches Wackeln */
+    overflow-x: hidden;    /* FIX: Schneidet Überstehendes ab */
     position: relative;
 }
 
@@ -30,7 +31,7 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     -webkit-text-size-adjust: 100%;
-    padding-top: 90px; /* Platzhalter für Fixed Nav */
+    padding-top: 90px;
 }
 
 /* 3. NAVIGATION (FIXED) */
@@ -41,12 +42,10 @@ nav {
     padding: 15px 30px;
     backdrop-filter: blur(10px);
     background: rgba(0, 18, 32, 0.9);
-    
-    position: fixed; /* Festgetackert */
+    position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    
     z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
 }
@@ -185,7 +184,6 @@ table {
 th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--glass-border); }
 th { background: rgba(0, 210, 255, 0.1); color: var(--moon-glow); }
 
-/* Suchleiste */
 #wikiSearch {
     width: 100%; padding: 15px 20px;
     background: rgba(0, 0, 0, 0.3); border: 1px solid var(--glass-border);
@@ -194,7 +192,6 @@ th { background: rgba(0, 210, 255, 0.1); color: var(--moon-glow); }
 }
 #wikiSearch:focus { border-color: var(--moon-glow); box-shadow: 0 0 15px rgba(0, 210, 255, 0.2); }
 
-/* Klickbarer Code */
 code {
     background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px;
     font-family: monospace; color: #ffd700;
@@ -203,7 +200,6 @@ code {
 code:hover { background: rgba(0, 210, 255, 0.2); border-color: var(--moon-glow); color: white; }
 code:active { transform: scale(0.95); }
 
-/* "Copied!" Toast */
 #copy-toast {
     visibility: hidden; min-width: 250px; background-color: var(--moon-glow);
     color: #000; text-align: center; border-radius: 50px; padding: 16px;
@@ -222,12 +218,74 @@ code:active { transform: scale(0.95); }
 
 .gallery-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; border: 2px solid var(--glass-border); transition: 0.3s; cursor: pointer; }
 
-/* 9. LIGHTBOX */
-.lightbox { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); backdrop-filter: blur(5px); }
-.lightbox-content { margin: auto; display: block; max-width: 90%; max-height: 80vh; border-radius: 10px; position: relative; top: 50%; transform: translateY(-50%); }
-.close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
-.lightbox-arrow { position: absolute; top: 50%; padding: 16px; color: white; font-weight: bold; font-size: 30px; cursor: pointer; user-select: none; }
-.prev { left: 10px; } .next { right: 10px; }
+/* 9. LIGHTBOX (Verbessert) */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    backdrop-filter: blur(5px);
+    /* Flexbox für Zentrierung */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.lightbox-content {
+    display: block;
+    max-width: 95%;        /* Größer */
+    max-height: 85vh;      /* Höher */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+    object-fit: contain;
+}
+
+/* Bildunterschrift im Lightbox */
+#lightbox-caption {
+    text-align: center;
+    color: var(--moon-glow);
+    font-size: 1.2rem;
+    margin-top: 15px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; z-index: 2001;}
+
+/* Pfeile */
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+    z-index: 2001;
+}
+.prev { left: 20px; }
+.next { right: 20px; }
+.lightbox-arrow:hover { background: var(--moon-glow); color: #000; }
+
+/* Mobile Flash Effekt */
+.flash-active {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #000 !important;
+    transform: translateY(-50%) scale(1.1);
+}
 
 /* 10. FOOTER & EXTRAS */
 footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); border-top: 1px solid var(--glass-border); margin-top:50px;}
@@ -240,8 +298,6 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
 
 .hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
 .show { opacity: 1; transform: translateY(0); }
-
-/* Animation "bubbleFloat" und ".mouse-bubble" wurden entfernt für bessere Performance */
 
 /* =========================================
    🚨 MOBILE FIX
@@ -265,6 +321,5 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
     table { display: block; overflow-x: auto; white-space: nowrap; }
     .gallery-grid { grid-template-columns: 1fr; }
     
-    /* Mouse-Bubble Fix für Mobile entfernt, da Animation global gelöscht wurde */
     h1 { font-size: 2.5rem; }
 }
