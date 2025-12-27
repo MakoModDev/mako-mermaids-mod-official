@@ -1,5 +1,5 @@
 /* =========================================
-   MAKO MERMAIDS MOD - OFFICIAL STYLE (FINAL FIX)
+   MAKO MERMAIDS MOD - OFFICIAL STYLE (V3 FINAL)
    ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap');
@@ -21,9 +21,10 @@ html, body {
     overflow-x: hidden; /* Verhindert seitliches Wackeln */
 }
 
-/* WICHTIG: Verhindert Scrollen wenn Galerie offen ist */
+/* WICHTIG: Stoppt Scrollen wenn Galerie offen ist */
 body.no-scroll {
     overflow: hidden !important;
+    height: 100vh;
 }
 
 body {
@@ -37,25 +38,17 @@ body {
 
 /* --- NAVIGATION --- */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    backdrop-filter: blur(10px);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 30px; backdrop-filter: blur(10px);
     background: rgba(0, 18, 32, 0.9);
-    position: fixed;
-    top: 0; left: 0; width: 100%;
-    z-index: 1000;
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     border-bottom: 1px solid var(--glass-border);
 }
 
 .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--moon-glow);
-    text-shadow: 0 0 15px var(--moon-glow);
-    font-weight: bold;
-    text-decoration: none;
+    font-family: 'Playfair Display', serif; font-size: 1.5rem;
+    color: var(--moon-glow); text-shadow: 0 0 15px var(--moon-glow);
+    font-weight: bold; text-decoration: none;
 }
 
 .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; }
@@ -65,68 +58,61 @@ nav {
 .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-weight: 600; transition: 0.3s; }
 .nav-links a:hover { color: var(--moon-glow); text-shadow: 0 0 10px var(--moon-glow); }
 
-/* --- HERO SECTION (Startseite füllen) --- */
+/* --- HERO SECTION --- */
 .hero {
-    min-height: 85vh; /* Etwas höher */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    /* Hier nutzen wir eines deiner Bilder als Hintergrund! */
-    background: linear-gradient(rgba(0,18,32,0.7), rgba(0,18,32,0.7)), url('../images/9bc195ae53a42319585be2128a7400495bebc342_350.webp');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Parallax Effekt */
-    margin-top: -90px; /* Zieht es unter die Nav hoch */
-    padding-top: 110px; /* Ausgleich für Text */
+    min-height: 85vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 20px; position: relative;
+    /* Platzhalter für dein episches Bild - ändere den Namen wenn du den Screenshot hast! */
+    background: linear-gradient(rgba(0,18,32,0.6), rgba(0,18,32,0.6)), url('../images/9bc195ae53a42319585be2128a7400495bebc342_350.webp');
+    background-size: cover; background-position: center; background-attachment: fixed;
+    margin-top: -90px; padding-top: 110px;
 }
 
 h1 {
-    font-size: 4rem;
-    font-family: 'Playfair Display', serif;
+    font-size: 4rem; font-family: 'Playfair Display', serif;
     background: linear-gradient(to right, #fff, var(--moon-glow));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 20px; text-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 /* --- CARDS --- */
 .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
 
 .card {
-    background: var(--glass);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    padding: 40px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease;
+    background: var(--glass); backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border); padding: 40px;
+    border-radius: 20px; margin-bottom: 30px; transition: transform 0.3s ease;
 }
 .card:hover { transform: translateY(-5px); box-shadow: 0 0 30px rgba(0, 210, 255, 0.1); }
 
 h2 { color: var(--moon-glow); margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; display: inline-block; }
 h3 { margin-bottom: 10px; color: #fff; }
 
-/* --- BUTTONS --- */
+/* --- BUTTONS (JETZT MIT FARBE!) --- */
 .btn-glow {
-    background: rgba(0, 210, 255, 0.1);
-    border: 2px solid var(--moon-glow);
-    color: var(--moon-glow);
-    padding: 15px 35px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: 0.4s;
-    display: inline-block;
-    margin: 10px;
-    text-transform: uppercase;
+    background: rgba(0, 210, 255, 0.15); /* Leichte Füllung */
+    border: 2px solid var(--moon-glow); color: var(--moon-glow);
+    padding: 15px 35px; font-size: 1.1rem; font-weight: bold;
+    border-radius: 50px; text-decoration: none; transition: 0.4s;
+    display: inline-block; margin: 10px; text-transform: uppercase;
 }
 .btn-glow:hover { background: var(--moon-glow); color: var(--deep-sea); box-shadow: 0 0 25px var(--moon-glow); transform: scale(1.05); }
+
+/* --- SOCIAL MEDIA BUTTONS (Die fehlten!) --- */
+.social-btn {
+    display: inline-block; padding: 10px 20px; margin: 5px;
+    color: white !important; text-decoration: none; border-radius: 8px;
+    font-weight: bold; transition: transform 0.2s; border: 1px solid rgba(255,255,255,0.2);
+}
+.social-btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
+
+/* Hier sind die Farben für die Buttons */
+.tt { background-color: #000000; border-color: #333; } /* TikTok */
+.dc { background-color: #5865F2; } /* Discord */
+.md { background-color: #1bd96a; color: #000 !important; } /* Modrinth */
+.cf { background-color: #F16436; } /* CurseForge */
+.mc { background-color: #3d464d; } /* MCreator */
 
 /* --- TABLES & SEARCH --- */
 table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0, 0, 0, 0.2); border-radius: 10px; overflow: hidden; }
@@ -138,57 +124,49 @@ th { background: rgba(0, 210, 255, 0.1); color: var(--moon-glow); }
 
 code { background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #ffd700; cursor: pointer; }
 
-/* --- GALERIE & LIGHTBOX (FIXED) --- */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
-.gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; border: 2px solid var(--glass-border); transition: 0.3s; cursor: pointer; }
-.gallery-img:hover { border-color: var(--moon-glow); transform: scale(1.02); }
+/* --- GALERIE & LIGHTBOX (RIESIG) --- */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
+.gallery-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; border: 2px solid var(--glass-border); transition: 0.3s; cursor: pointer; }
+.gallery-img:hover { border-color: var(--moon-glow); transform: scale(1.03); }
 
-/* Lightbox Container - Zentriert alles */
 .lightbox {
-    display: none; /* Wird per JS auf flex gesetzt */
-    position: fixed;
-    z-index: 5000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.95);
-    backdrop-filter: blur(10px);
-    justify-content: center; /* Horizontal mittig */
-    align-items: center;     /* Vertikal mittig */
-    flex-direction: column;
+    display: none; position: fixed; z-index: 5000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.98); /* Fast schwarz */
+    backdrop-filter: blur(15px);
+    justify-content: center; align-items: center; flex-direction: column;
 }
 
-/* Das Bild in der Lightbox */
 .lightbox-content {
-    max-width: 90vw;  /* Maximal 90% der Breite */
-    max-height: 80vh; /* Maximal 80% der Höhe */
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
-    object-fit: contain;
+    max-width: 95vw; /* 95% der Bildschirmbreite */
+    max-height: 85vh; /* 85% der Höhe */
+    border-radius: 5px;
+    box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
+    object-fit: contain; /* Bild wird nicht verzerrt */
 }
 
 #lightbox-caption {
-    margin-top: 15px;
-    color: var(--moon-glow);
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
+    margin-top: 15px; color: var(--moon-glow);
+    font-size: 1.3rem; font-weight: 500; text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,1);
 }
 
-.close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 50px; cursor: pointer; z-index: 5001; }
+.close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 50px; cursor: pointer; z-index: 5001; transition: 0.2s;}
+.close-btn:hover { color: var(--moon-glow); transform: rotate(90deg); }
+
 .lightbox-arrow {
     position: absolute; top: 50%; transform: translateY(-50%);
-    font-size: 40px; color: white; background: rgba(0,0,0,0.5);
-    width: 60px; height: 60px; border-radius: 50%;
+    font-size: 40px; color: white; background: rgba(255,255,255,0.1);
+    width: 70px; height: 70px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; user-select: none; transition: 0.2s; z-index: 5001;
 }
-.prev { left: 20px; }
-.next { right: 20px; }
+.prev { left: 30px; }
+.next { right: 30px; }
 .lightbox-arrow:hover { background: var(--moon-glow); color: black; }
 
-/* --- FOOTER & MISC --- */
+/* --- FOOTER --- */
 footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); border-top: 1px solid var(--glass-border); margin-top:50px;}
-.social-btn { display: inline-block; padding: 10px 20px; margin: 5px; color: white; text-decoration: none; border-radius: 8px; background: #333; }
 .hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
 .show { opacity: 1; transform: translateY(0); }
 
@@ -198,4 +176,5 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
     .nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: 100%; background: rgba(0, 18, 32, 0.98); flex-direction: column; justify-content: center; transform: translateX(100%); transition: 0.4s; }
     .nav-links.active { transform: translateX(0); }
     h1 { font-size: 2.5rem; }
+    .lightbox-arrow { width: 50px; height: 50px; font-size: 25px; } /* Kleinere Pfeile am Handy */
 }
