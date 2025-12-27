@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-    /* 3. LIGHTBOX GALERIE (SCROLL FIX & KEYBOARD) */
+    /* 3. LIGHTBOX GALERIE (FINAL FIX) */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
@@ -50,13 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
         function openLightbox(index) {
             currentIndex = index;
             lightbox.style.display = "flex"; 
-            document.body.classList.add("no-scroll"); // STOPPT SCROLLEN
+            document.body.classList.add("no-scroll"); // SCROLL SPERRE AN
             updateLightbox();
         }
 
         function closeLightbox() {
             lightbox.style.display = "none";
-            document.body.classList.remove("no-scroll"); // ERLAUBT SCROLLEN
+            document.body.classList.remove("no-scroll"); // SCROLL SPERRE AUS
         }
 
         function showNext() {
@@ -69,21 +69,23 @@ document.addEventListener("DOMContentLoaded", () => {
             updateLightbox();
         }
 
-        // Klicks
+        // Klicks auf Bilder
         galleryImages.forEach((img, index) => {
             img.addEventListener('click', () => openLightbox(index));
         });
 
+        // Button Events
         document.querySelector('.close-btn')?.addEventListener('click', closeLightbox);
         document.querySelector('.next')?.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
         document.querySelector('.prev')?.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
 
+        // Hintergrund Klick
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // Tasten
-        document.addEventListener('keydown', (e) => {
+        // KEYBOARD EVENTS (Global Window Listener ist sicherer)
+        window.addEventListener('keydown', (e) => {
             if (lightbox.style.display === "flex") {
                 if (e.key === "ArrowRight") showNext();
                 if (e.key === "ArrowLeft") showPrev();
@@ -92,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* 4. SUCHE & COPY */
+    /* 4. SEARCH & COPY */
     const searchInput = document.getElementById('wikiSearch');
     if (searchInput) {
         searchInput.addEventListener('keyup', (e) => {
