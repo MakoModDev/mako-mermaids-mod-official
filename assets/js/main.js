@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       2. SCROLL ANIMATION (Einblenden)
+       2. SCROLL ANIMATION (Einblenden - Dezent)
        ========================================= */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
     /* =========================================
-       3. LIGHTBOX GALERIE
+       3. LIGHTBOX GALERIE (Funktionalität)
        ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -84,41 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================
-       4. SOUNDS & BUBBLES (FINAL FIX)
-       ========================================= */
-    
-    // --- SOUND ---
-    // Nur laden, wenn Datei da ist
-    const clickSound = new Audio('assets/files/click.mp3');
-    clickSound.volume = 0.2;
-
-    document.addEventListener('click', (e) => {
-        // UPDATE: Check ob PC (Breiter als 768px). Wenn Handy -> Kein Sound.
-        if (window.innerWidth > 768) {
-            // UPDATE: .gallery-img entfernt! Sound nur bei echten Buttons/Links.
-            if (e.target.closest('a, button, .hamburger, summary, code, .lightbox-arrow, .close-btn')) {
-                clickSound.currentTime = 0;
-                clickSound.play().catch(() => {}); 
-            }
-        }
-    });
-
-    // --- BUBBLES ---
-    // Nur auf PC (Breiter als 768px)
-    document.addEventListener('mousemove', (e) => {
-        if (window.innerWidth > 768 && Math.random() < 0.1) { 
-            const bubble = document.createElement('div');
-            bubble.classList.add('mouse-bubble');
-            const size = Math.random() * 15 + 5;
-            bubble.style.width = `${size}px`; bubble.style.height = `${size}px`;
-            bubble.style.left = `${e.pageX}px`; bubble.style.top = `${e.pageY}px`;
-            document.body.appendChild(bubble);
-            setTimeout(() => bubble.remove(), 1000);
-        }
-    });
-
-    /* =========================================
-       5. WIKI SEARCH & COPY
+       4. WIKI SEARCH & COPY (Nützlich)
        ========================================= */
     // SUCHE
     const searchInput = document.getElementById('wikiSearch');
