@@ -181,5 +181,48 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
     .nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: 100%; background: rgba(0, 18, 32, 0.98); flex-direction: column; justify-content: center; transform: translateX(100%); transition: 0.4s; }
     .nav-links.active { transform: translateX(0); }
     h1 { font-size: 3rem; }
-    .hero { background-attachment: scroll; } /* Fix für manche Handys */
+    /* --- HERO SECTION (FULLSCREEN & WEICHER ÜBERGANG) --- */
+.hero {
+    /* Nimmt immer 100% der Bildschirmhöhe ein */
+    height: 100vh;
+    width: 100%;
+    
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    text-align: center; 
+    padding: 20px; 
+    position: relative;
+    
+    /* Hintergrundbild mit "Overlay" für bessere Lesbarkeit */
+    /* UND einem Verlauf nach unten (to bottom), damit es weich ins Dunkelblau übergeht */
+    background: 
+        linear-gradient(to bottom, rgba(0,18,32,0.3) 0%, rgba(0,18,32,0.6) 80%, #001f3f 100%),
+        url('../images/heropic.webp');
+    
+    background-size: cover;       /* Bild füllt alles aus */
+    background-position: center;  /* Bild-Mitte im Fokus */
+    background-attachment: scroll; /* WICHTIG: Kein "weirdes" Festkleben mehr! Scrollt normal mit. */
+    
+    /* Korrektur für die feste Nav-Leiste */
+    margin-top: 0; 
+    padding-top: 0;
+}
+
+/* Der Titel wird riesig und episch */
+h1 {
+    font-size: 5rem; 
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to right, #fff, var(--moon-glow));
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px; 
+    text-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Falls du am Handy bist, Schrift etwas kleiner */
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+}
 }
