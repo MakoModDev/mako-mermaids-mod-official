@@ -143,11 +143,19 @@ code { background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; font-f
 }
 
 .lightbox-content {
-    max-width: 95vw;
-    max-height: 85vh;
+    /* Zwingt das Bild, den Platz zu nehmen, auch wenn die Datei klein ist */
+    width: auto;  
+    height: auto;
+    min-width: 50vw;  /* Mindestens halber Bildschirm breit */
+    min-height: 50vh; /* Mindestens halber Bildschirm hoch */
+    
+    max-width: 95vw;  /* Aber nicht breiter als der Screen */
+    max-height: 85vh; /* Und nicht höher */
+    
+    object-fit: contain; /* Verhindert Verzerrung */
+    
     border-radius: 5px;
     box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
-    object-fit: contain;
 }
 
 #lightbox-caption {
@@ -183,31 +191,20 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
     h1 { font-size: 3rem; }
     /* --- HERO SECTION (FULLSCREEN & WEICHER ÜBERGANG) --- */
 .hero {
-    /* Nimmt immer 100% der Bildschirmhöhe ein */
     height: 100vh;
     width: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; position: relative;
     
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center;
-    text-align: center; 
-    padding: 20px; 
-    position: relative;
-    
-    /* Hintergrundbild mit "Overlay" für bessere Lesbarkeit */
-    /* UND einem Verlauf nach unten (to bottom), damit es weich ins Dunkelblau übergeht */
+    /* Der Trick: Ein Verlauf (Gradient) am unteren Rand ins Dunkelblau */
     background: 
-        linear-gradient(to bottom, rgba(0,18,32,0.3) 0%, rgba(0,18,32,0.6) 80%, #001f3f 100%),
+        linear-gradient(to bottom, rgba(0,18,32,0.2) 0%, rgba(0,18,32,0.4) 85%, #001220 100%),
         url('../images/heropic.webp');
-    
-    background-size: cover;       /* Bild füllt alles aus */
-    background-position: center;  /* Bild-Mitte im Fokus */
-    background-attachment: scroll; /* WICHTIG: Kein "weirdes" Festkleben mehr! Scrollt normal mit. */
-    
-    /* Korrektur für die feste Nav-Leiste */
-    margin-top: 0; 
-    padding-top: 0;
+        
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* Scrollt normal mit (fühlt sich natürlicher an) */
+    margin-top: 0; padding-top: 0;
 }
 
 /* Der Titel wird riesig und episch */
