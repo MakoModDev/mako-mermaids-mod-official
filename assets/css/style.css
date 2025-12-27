@@ -1,5 +1,5 @@
 /* =========================================
-   MAKO MERMAIDS MOD - OFFICIAL STYLE (V3 FINAL)
+   MAKO MERMAIDS MOD - OFFICIAL STYLE (V4 FINAL)
    ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap');
@@ -18,10 +18,10 @@
 html, body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden; /* Verhindert seitliches Wackeln */
+    overflow-x: hidden;
 }
 
-/* WICHTIG: Stoppt Scrollen wenn Galerie offen ist */
+/* WICHTIG: Scroll-Sperre für Lightbox */
 body.no-scroll {
     overflow: hidden !important;
     height: 100vh;
@@ -58,13 +58,15 @@ nav {
 .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-weight: 600; transition: 0.3s; }
 .nav-links a:hover { color: var(--moon-glow); text-shadow: 0 0 10px var(--moon-glow); }
 
-/* --- HERO SECTION --- */
+/* --- HERO SECTION (DEIN NEUES BILD!) --- */
 .hero {
     min-height: 85vh;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center; padding: 20px; position: relative;
-    /* Platzhalter für dein episches Bild - ändere den Namen wenn du den Screenshot hast! */
-    background: linear-gradient(rgba(0,18,32,0.6), rgba(0,18,32,0.6)), url('../images/9bc195ae53a42319585be2128a7400495bebc342_350.webp');
+    
+    /* Hier wird dein heropic.webp geladen! */
+    background: linear-gradient(rgba(0,18,32,0.5), rgba(0,18,32,0.5)), url('../images/heropic.webp');
+    
     background-size: cover; background-position: center; background-attachment: fixed;
     margin-top: -90px; padding-top: 110px;
 }
@@ -89,9 +91,9 @@ h1 {
 h2 { color: var(--moon-glow); margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; display: inline-block; }
 h3 { margin-bottom: 10px; color: #fff; }
 
-/* --- BUTTONS (JETZT MIT FARBE!) --- */
+/* --- BUTTONS --- */
 .btn-glow {
-    background: rgba(0, 210, 255, 0.15); /* Leichte Füllung */
+    background: rgba(0, 210, 255, 0.15);
     border: 2px solid var(--moon-glow); color: var(--moon-glow);
     padding: 15px 35px; font-size: 1.1rem; font-weight: bold;
     border-radius: 50px; text-decoration: none; transition: 0.4s;
@@ -99,7 +101,7 @@ h3 { margin-bottom: 10px; color: #fff; }
 }
 .btn-glow:hover { background: var(--moon-glow); color: var(--deep-sea); box-shadow: 0 0 25px var(--moon-glow); transform: scale(1.05); }
 
-/* --- SOCIAL MEDIA BUTTONS (Die fehlten!) --- */
+/* --- SOCIAL MEDIA BUTTONS (FARBEN FIX) --- */
 .social-btn {
     display: inline-block; padding: 10px 20px; margin: 5px;
     color: white !important; text-decoration: none; border-radius: 8px;
@@ -107,12 +109,12 @@ h3 { margin-bottom: 10px; color: #fff; }
 }
 .social-btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
-/* Hier sind die Farben für die Buttons */
-.tt { background-color: #000000; border-color: #333; } /* TikTok */
-.dc { background-color: #5865F2; } /* Discord */
-.md { background-color: #1bd96a; color: #000 !important; } /* Modrinth */
-.cf { background-color: #F16436; } /* CurseForge */
-.mc { background-color: #3d464d; } /* MCreator */
+/* Expezite Farben mit !important damit sie nicht überschrieben werden */
+.tt { background-color: #000000 !important; border-color: #333; } /* TikTok */
+.dc { background-color: #5865F2 !important; } /* Discord */
+.md { background-color: #1bd96a !important; color: #000 !important; } /* Modrinth */
+.cf { background-color: #F16436 !important; } /* CurseForge */
+.mc { background-color: #3d464d !important; } /* MCreator */
 
 /* --- TABLES & SEARCH --- */
 table { width: 100%; border-collapse: collapse; margin-top: 20px; background: rgba(0, 0, 0, 0.2); border-radius: 10px; overflow: hidden; }
@@ -124,7 +126,7 @@ th { background: rgba(0, 210, 255, 0.1); color: var(--moon-glow); }
 
 code { background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #ffd700; cursor: pointer; }
 
-/* --- GALERIE & LIGHTBOX (RIESIG) --- */
+/* --- LIGHTBOX (RIESIG & ZENTRIERT) --- */
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
 .gallery-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; border: 2px solid var(--glass-border); transition: 0.3s; cursor: pointer; }
 .gallery-img:hover { border-color: var(--moon-glow); transform: scale(1.03); }
@@ -132,23 +134,24 @@ code { background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; font-f
 .lightbox {
     display: none; position: fixed; z-index: 5000;
     left: 0; top: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.98); /* Fast schwarz */
-    backdrop-filter: blur(15px);
+    background-color: rgba(0,0,0,0.95); /* Dunkler Hintergrund */
+    backdrop-filter: blur(10px);
     justify-content: center; align-items: center; flex-direction: column;
 }
 
 .lightbox-content {
-    max-width: 95vw; /* 95% der Bildschirmbreite */
-    max-height: 85vh; /* 85% der Höhe */
+    max-width: 95vw; /* 95% Breite */
+    max-height: 85vh; /* 85% Höhe */
     border-radius: 5px;
     box-shadow: 0 0 50px rgba(0, 210, 255, 0.2);
-    object-fit: contain; /* Bild wird nicht verzerrt */
+    object-fit: contain;
 }
 
 #lightbox-caption {
     margin-top: 15px; color: var(--moon-glow);
     font-size: 1.3rem; font-weight: 500; text-align: center;
     text-shadow: 0 2px 10px rgba(0,0,0,1);
+    background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px;
 }
 
 .close-btn { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 50px; cursor: pointer; z-index: 5001; transition: 0.2s;}
@@ -176,5 +179,5 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
     .nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: 100%; background: rgba(0, 18, 32, 0.98); flex-direction: column; justify-content: center; transform: translateX(100%); transition: 0.4s; }
     .nav-links.active { transform: translateX(0); }
     h1 { font-size: 2.5rem; }
-    .lightbox-arrow { width: 50px; height: 50px; font-size: 25px; } /* Kleinere Pfeile am Handy */
+    .lightbox-arrow { width: 50px; height: 50px; font-size: 25px; } 
 }
