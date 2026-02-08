@@ -1,47 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maps Gallery</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Mako Island Map</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Maps Gallery</h1>
+    <header class="hero-header">
+        <h1>Mako Island Map</h1>
+        <a href="https://legacy.curseforge.com/minecraft/worlds/mako-island-map" class="btn">Download Now</a>
     </header>
-    <main>
-        <section class="download-section">
-            <h2>Download Maps</h2>
-            <button id="download-btn">Download All Maps</button>
-        </section>
 
-        <section class="description-section">
-            <h2>Map Description</h2>
-            <textarea id="map-description" rows="4" cols="50" placeholder="Enter map description here..."></textarea>
-        </section>
+    <section class="description">
+        <h2>Map Description</h2>
+        <p>Explore the enchanting landscapes of Mako Island, featuring lush forests, serene beaches, and hidden wonders. Perfect for adventurers of all ages!</p>
+    </section>
 
-        <section class="gallery">
-            <h2>Image Gallery</h2>
-            <div class="gallery-item">
-                <img src="map1.jpg" alt="Map 1">
-                <h3>Map Title 1</h3>
-                <p>Description for Map 1.</p>
-            </div>
-            <div class="gallery-item">
-                <img src="map2.jpg" alt="Map 2">
-                <h3>Map Title 2</h3>
-                <p>Description for Map 2.</p>
-            </div>
-            <div class="gallery-item">
-                <img src="map3.jpg" alt="Map 3">
-                <h3>Map Title 3</h3>
-                <p>Description for Map 3.</p>
-            </div>
-        </section>
-    </main>
+    <section class="gallery">
+        <h2>Gallery</h2>
+        <div class="card">
+            <img src="map-1.png" alt="Forest Path">
+            <h3>Forest Path</h3>
+            <p>Discover the winding paths through the vibrant forest.</p>
+        </div>
+        <div class="card">
+            <img src="map-2.png" alt="Mako Island Mountain">
+            <h3>Mako Island Mountain</h3>
+            <p>Climb the majestic mountain for breathtaking views.</p>
+        </div>
+        <div class="card">
+            <img src="map-3.png" alt="Moon Pool">
+            <h3>Moon Pool</h3>
+            <p>Relax by the serene moonlit waters.</p>
+        </div>
+        <div class="card">
+            <img src="map-4.png" alt="Lukewarm Ocean">
+            <h3>Lukewarm Ocean</h3>
+            <p>Enjoy the calm waves at our private beach.</p>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2026 MakoModDev. All rights reserved.</p>
+        <p>© 2026 MakoModDev. All rights reserved.</p>
     </footer>
 </body>
 </html>
