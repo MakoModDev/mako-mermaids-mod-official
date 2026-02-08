@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://makomoddev.github.io/mako-mermaids-mod-official/sitemap.xml
