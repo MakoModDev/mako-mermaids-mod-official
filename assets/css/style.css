@@ -191,3 +191,93 @@ footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.4); bo
     .hero { background-attachment: scroll; }
     .lightbox-arrow { width: 50px; height: 50px; font-size: 25px; } 
 }
+
+/* --- PREMIUM POLISH --- */
+
+/* Glowing card on hover */
+.card {
+    position: relative;
+    overflow: hidden;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(135deg, transparent 40%, rgba(0, 210, 255, 0.08) 100%);
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+.card:hover::before { opacity: 1; }
+
+/* Pulsing CTA glow on primary btn */
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 12px rgba(0,210,255,0.4), 0 0 30px rgba(0,210,255,0.1); }
+    50% { box-shadow: 0 0 25px rgba(0,210,255,0.7), 0 0 60px rgba(0,210,255,0.25); }
+}
+.btn-glow:first-of-type {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* Version badge */
+.version-badge {
+    display: inline-block;
+    background: rgba(0, 210, 255, 0.15);
+    border: 1px solid var(--moon-glow);
+    color: var(--moon-glow);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+}
+
+/* Changelog "latest" badge */
+.badge-latest {
+    display: inline-block;
+    background: var(--moon-glow);
+    color: #001220;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 50px;
+    vertical-align: middle;
+    margin-left: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Smooth page-wide scroll behaviour */
+html { scroll-behavior: smooth; }
+
+/* Nav active link underline */
+.nav-links a {
+    position: relative;
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 2px;
+    background: var(--moon-glow);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* Item cards in downloads/wiki */
+.item-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.item-card:hover {
+    border-color: var(--moon-glow);
+    transform: translateY(-4px);
+}
