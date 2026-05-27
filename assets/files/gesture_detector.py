@@ -1,9 +1,9 @@
+import os
 os.environ["QT_QPA_PLATFORM"] = "xcb"
 import cv2
 import mediapipe as mp
 import json
 import time
-import os
 import sys
 import math
 from collections import deque
@@ -36,7 +36,7 @@ class H2OGestureController:
         
         # Start Webcam
         print("Opening Camera...")
-        self.cap = cv2.VideoCapture(0)
+        self.cap = cv2.VideoCapture(1)
         if not self.cap.isOpened():
             raise Exception("Could not open webcam! Is it connected?")
 
@@ -61,7 +61,7 @@ class H2OGestureController:
         for i in range(1, 5):
             tip_dist = get_dist(wrist, landmarks[tips[i]])
             pip_dist = get_dist(wrist, landmarks[pips[i]])
-            fingers.append(tip_dist > pip_dist * 1.05)
+            fingers.append(tip_dist > pip_dist * 1.15)
             
         # --- LOGIC ---
         
